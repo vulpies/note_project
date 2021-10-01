@@ -223,13 +223,18 @@ regBoxForm {
   padding-bottom: 10px;
   margin-bottom: 25px;
 }
-.notes__single-block__title {
+.notes__single-block-title {
   padding-bottom: 10px;
   text-align: center;
   width: 100%;
 }
-.notes__single-block__subtitle {
+.notes__single-block-subtitle {
   width: 100%;
+}
+
+.blindMsg {
+  margin-top: 120px;
+  text-align: center;
 }
 
 .notes__btn {
@@ -271,6 +276,8 @@ regBoxForm {
   border: 2px solid #050506;
   -webkit-box-shadow: 3px 2px 5px #5c6282e0;
           box-shadow: 3px 2px 5px #5c6282e0;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
 }
 .notes__btn-remove:hover, .notes__btn-remove:focus {
   background-color: #f2131f;
@@ -319,7 +326,7 @@ regBoxForm {
 .create-note__texts > input[type=text], .create-note__texts > textarea {
   width: 50%;
   margin: 5px auto 20px auto;
-  padding: 17px 15px;
+  padding: 10px 13px;
   background: #d8e3fa4d;
   display: block;
   font-size: 22px;
@@ -331,4 +338,31 @@ textarea {
   text-align: justify;
   min-height: 145px;
   height: 180px;
+}
+
+.opened-notes {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+.opened-notes > h3 {
+  margin-bottom: 15px;
+}
+.opened-notes > p {
+  text-align: justify;
 }

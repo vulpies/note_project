@@ -1,4 +1,4 @@
-const notes = [
+let notes = [
     {
         _id: 1632679189739,
         title: "Note #1",
@@ -24,5 +24,14 @@ const notes = [
             "Nullam lobortis nibh ante, eu convallis orci mattis accumsan. Suspendisse convallis semper fermentum. Aliquam rhoncus arcu risus, ut ullamcorper massa lobortis eu. Phasellus id urna eget nibh lobortis vestibulum.",
     },
 ]
+
+export const getById = (id) => notes.find((note) => note._id === Number(id))
+
+export const deleteNoteById = (id) => {
+    let deleteNoteQuestion = window.confirm("Подтверждаете удаление заметки?")
+    if (deleteNoteQuestion) {
+        notes = notes.filter((note) => note._id !== Number(id))
+    }
+}
 
 export default notes

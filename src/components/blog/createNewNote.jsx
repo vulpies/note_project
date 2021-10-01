@@ -43,12 +43,15 @@ const CreateNewNote = () => {
                     ></input>
 
                     <p className="create-note__texts-subtitle">Описание:</p>
+
                     <textarea
                         type="text"
                         name="description"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                    ></textarea>
+                    >
+                        <pre></pre>
+                    </textarea>
                 </div>
 
                 <div className="notes__btn">

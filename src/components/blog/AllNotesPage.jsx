@@ -15,22 +15,24 @@ const AllNotesPage = () => {
         )
         if (deleteNoteQuestion) {
             setNewNotesArr(filteredNotes)
-            console.log(setNewNotesArr)
         }
     }
 
-    const singleNote = newNotesArr.map((note) => {
-        return (
-            <AllNotes
-                title={note.title}
-                description={note.description}
-                key={note._id}
-                note={note}
-                id={note._id} /* передаем в функцию в NotesBtns */
-                onRemove={removeNote}
-            />
-        )
-    })
+    let singleNote = newNotesArr
+    if (newNotesArr.length) {
+        singleNote = newNotesArr.map((note) => {
+            return (
+                <AllNotes
+                    key={note._id}
+                    /*id={note._id} передаем в функцию в NotesBtns */
+                    onRemove={removeNote}
+                    {...note}
+                />
+            )
+        })
+    } else {
+        singleNote = <h2 className="blindMsg">Сейчас у вас нет заметок</h2>
+    }
 
     return (
         <>
@@ -43,6 +45,7 @@ const AllNotesPage = () => {
                     {<AiOutlinePlusCircle />} Добавить заметку
                 </Link>
             </div>
+
             <div className="row notes__main-block">{singleNote}</div>
         </>
     )
