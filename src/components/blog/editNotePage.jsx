@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react"
 import NavBar from "../../menu/navBar"
 import BackToMainPage from "./buttons/backToMainPage"
-import CommonBtn from "./buttons/commonBtn"
 import { getById } from "../../fake_api/notes.api"
 import { Spinner } from "react-bootstrap"
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 
 const EditNotePage = () => {
+    const history = useHistory()
+    const handleClick = () => {
+        history.push(`/notes/${noteId}`)
+    }
+
     const { noteId } = useParams()
     const [note, setNote] = useState("loading")
 
@@ -17,19 +21,13 @@ const EditNotePage = () => {
     }, [noteId])
 
     if (note === "loading") {
-        return (
-            <Spinner
-                animation="border"
-                variant="primary"
-                styles={{ marginTop: "50%" }}
-            />
-        )
+        return <Spinner animation="border" variant="primary" />
         /* не забыть отцентровать спиннер */
     }
 
-    function db(asd) {
-        console.log(asd)
-    }
+    // function db(asd) {
+    //     console.log(asd)
+    // }
 
     return (
         <>
@@ -41,6 +39,7 @@ const EditNotePage = () => {
                 <div className="create-note__texts">
                     <p className="create-note__texts-subtitle">Название:</p>
                     <input type="text" defaultValue={note.title} />
+
                     <p className="create-note__texts-subtitle">Описание:</p>
                     <textarea defaultValue={note.description}></textarea>
                 </div>
@@ -50,7 +49,12 @@ const EditNotePage = () => {
                         Сохранить
                     </button>
                     {/* Обновлять массив */}
-                    <CommonBtn name="Отменить" />
+                    <button
+                        className="notes__btn-common notes__btn-open"
+                        onClick={handleClick}
+                    >
+                        Отменить
+                    </button>
                 </div>
             </div>
         </>

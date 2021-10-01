@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom"
 import BackToMainPage from "./buttons/backToMainPage"
 import { getById } from "../../fake_api/notes.api"
 import { Spinner } from "react-bootstrap"
-import CommonBtn from "./buttons/commonBtn"
+import CommonBtn from "./buttons/commonLinkBtn"
 
 const NotePage = () => {
     const { noteId } = useParams()

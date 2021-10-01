@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import CommonBtn from "./buttons/commonBtn"
+import CommonBtn from "./buttons/commonLinkBtn"
 // import { deleteNoteById } from "../../fake_api/notes.api"
 
 const AllNotes = ({ onRemove, _id, title, description }) => {
