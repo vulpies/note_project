@@ -11,12 +11,7 @@ const AllNotesPage = () => {
 
     const removeNote = (id) => {
         let filteredNotes = newNotesArr.filter((note) => note._id !== id)
-        let deleteNoteQuestion = window.confirm(
-            "Подтверждаете удаление заметки?"
-        )
-        if (deleteNoteQuestion) {
-            setNewNotesArr(filteredNotes)
-        }
+        setNewNotesArr(filteredNotes)
     }
 
     let singleNote = newNotesArr

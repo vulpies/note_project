@@ -38,7 +38,8 @@
 }
 
 .remove:hover,
-.remove:focus {
+.remove:focus,
+.remove:active {
     background-color: #f2131f;
     border: 2px solid #fff5f5;
     color: #fdfdfd;

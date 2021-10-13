@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import CommonBtn from "./buttons/commonLinkBtn"
 import buttons from "./buttons/buttons.module.css"
+import OpenModal from "./modal/modal"
 
 const AllNotes = ({ onRemove, _id, title, description }) => {
     return (
@@ -18,12 +19,17 @@ const AllNotes = ({ onRemove, _id, title, description }) => {
                         className={`${buttons.common} ${buttons.open}`}
                     />
                 </Link>
-                <button
+                <OpenModal
+                    name="Удалить"
+                    text="Подтверждаете удаление заметки?"
+                    onClick={() => onRemove(_id)}
+                />
+                {/*                 <button
                     className={`${buttons.common} ${buttons.remove}`}
                     onClick={() => onRemove(_id)}
                 >
                     Удалить
-                </button>
+                </button> */}
             </div>
         </div>
     )
