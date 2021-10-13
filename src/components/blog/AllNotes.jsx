@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import CommonBtn from "./buttons/commonLinkBtn"
-// import { deleteNoteById } from "../../fake_api/notes.api"
+import buttons from "./buttons/buttons.module.css"
 
 const AllNotes = ({ onRemove, _id, title, description }) => {
     return (
@@ -11,12 +11,15 @@ const AllNotes = ({ onRemove, _id, title, description }) => {
                 <p className="notes__single-block-subtitle">{description}</p>
             </div>
 
-            <div className="notes__btn">
+            <div className={buttons.btns}>
                 <Link to={`/notes/${_id}`}>
-                    <CommonBtn name="Открыть" />
+                    <CommonBtn
+                        name="Открыть"
+                        className={`${buttons.common} ${buttons.open}`}
+                    />
                 </Link>
                 <button
-                    className="notes__btn-common notes__btn-remove"
+                    className={`${buttons.common} ${buttons.remove}`}
                     onClick={() => onRemove(_id)}
                 >
                     Удалить

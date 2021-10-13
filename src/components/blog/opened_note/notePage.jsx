@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react"
-import NavBar from "../../menu/navBar"
+import NavBar from "../../../menu/navBar"
 import { Link, useParams } from "react-router-dom"
-import BackToMainPage from "./buttons/backToMainPage"
-import { getById } from "../../fake_api/notes.api"
+import BackToMainPage from "../buttons/backToMainPage"
+import { getById } from "../../../fake_api/notes.api"
 import { Spinner } from "react-bootstrap"
-import CommonBtn from "./buttons/commonLinkBtn"
+import CommonLinkBtn from "../buttons/commonLinkBtn"
+import buttons from "../buttons/buttons.module.css"
+import notesStyle from "./notePage.module.css"
 
 const NotePage = () => {
     const { noteId } = useParams()
@@ -26,20 +28,22 @@ const NotePage = () => {
         <>
             <NavBar />
             <BackToMainPage />
-            <div className="opened-notes">
+            <div className={notesStyle.open}>
                 <h3>{note.title}</h3>
                 <p>{note.description}</p>
 
-                <div className="notes__btn">
+                <div className={buttons.btns}>
                     <Link to={`/notes/editnote/${noteId}`}>
-                        <CommonBtn name="Редактировать" />
+                        <CommonLinkBtn
+                            name="Редактировать"
+                            className={`${buttons.common} ${buttons.open}`}
+                        />
                     </Link>
-                    <button
-                        className="notes__btn-common notes__btn-remove"
-                        // onClick={() => onRemove(note._id)}
-                    >
-                        Удалить
-                    </button>
+
+                    <CommonLinkBtn
+                        name="Удалить"
+                        className={`${buttons.common} ${buttons.remove}`}
+                    />
                 </div>
             </div>
         </>

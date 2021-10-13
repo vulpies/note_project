@@ -1,0 +1,78 @@
+.btns {
+    text-align: center;
+    margin: 15px;
+}
+
+.wrapper {
+    margin: 10px 0 10px -5px;
+    text-align: left;
+}
+
+.common {
+    padding: 4px 9px;
+    border-radius: 5px;
+    color: #01050d;
+    font-size: 20px;
+    font-weight: 500;
+    outline: none;
+    margin: 5px;
+}
+
+.common:focus {
+    outline: none;
+}
+
+.common > a {
+    color: #000;
+}
+
+.common > a:hover {
+    color: #fff;
+}
+
+.remove {
+    background-color: #efefef;
+    border: 2px solid #050506;
+    box-shadow: 3px 2px 5px #5c6282e0;
+    transition: 0.2s linear;
+}
+
+.remove:hover,
+.remove:focus {
+    background-color: #f2131f;
+    border: 2px solid #fff5f5;
+    color: #fdfdfd;
+    box-shadow: 4px 3px 3px #f66666;
+}
+
+.open {
+    background-color: #aec4f1;
+    border: 2px solid #0c0c62;
+    transition: 0.3s linear;
+    box-shadow: 4px 3px 3px rgb(86 88 169 / 54%);
+}
+
+.open:hover,
+.open:focus {
+    background-color: #5045c0;
+    color: #fff;
+    border: 2px solid #dae4ef;
+    box-shadow: 3px 3px 6px rgb(6 4 120 / 74%),
+        -1px -1px 1px rgb(28 14 125 / 84%);
+}
+
+.add {
+    background-color: #aec4f1;
+    border: 2px solid #0c0c62;
+    transition: 0.3s linear;
+    box-shadow: 4px 3px 3px rgb(86 88 169 / 54%);
+}
+
+.add:hover,
+.add:focus {
+    background-color: #5045c0;
+    color: #fff;
+    border: 2px solid #dae4ef;
+    box-shadow: 3px 3px 6px rgb(6 4 120 / 74%),
+        -1px -1px 1px rgb(28 14 125 / 84%);
+}

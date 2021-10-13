@@ -1,7 +1,7 @@
 import React from "react"
-import FormLogIn from "../logIn/formLogIn"
+import FormLogIn from "../components/logIn/login-form/formLogIn"
 import Button from "@mui/material/Button"
-import NavBar from "../../menu/navBar"
+import NavBar from "./navBar"
 
 const Registration = () => {
     return (
@@ -9,8 +9,8 @@ const Registration = () => {
             <NavBar />
             <h1 className="main__div">Регистрация</h1>
             <p>Пожалуйста, заполните форму ниже.</p>
-            <FormLogIn className="regForm" boxStyle="regBoxForm" />
-            <Button variant="contained" size="small" className="btns">
+            <FormLogIn />
+            <Button variant="contained" size="small" className="btns" disabled>
                 Зарегистрироваться
             </Button>
         </>

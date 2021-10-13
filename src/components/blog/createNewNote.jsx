@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import NavBar from "../../menu/navBar"
 import BackToMainPage from "./buttons/backToMainPage"
+import buttons from "./buttons/buttons.module.css"
+import CommonLinkBtn from "./buttons/commonLinkBtn"
 
 const CreateNewNote = () => {
     const [title, setTitle] = useState("")
@@ -54,13 +56,12 @@ const CreateNewNote = () => {
                     </textarea>
                 </div>
 
-                <div className="notes__btn">
-                    <button
-                        className="notes__btn-common notes__btn-open"
+                <div className={buttons.btns}>
+                    <CommonLinkBtn
+                        name="Добавить"
+                        className={`${buttons.common} ${buttons.open}`}
                         onClick={(e) => addNewNote(e)}
-                    >
-                        Добавить
-                    </button>
+                    />
                 </div>
             </div>
         </>

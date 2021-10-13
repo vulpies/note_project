@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react"
-import NavBar from "../../menu/navBar"
-import BackToMainPage from "./buttons/backToMainPage"
-import { getById } from "../../fake_api/notes.api"
+import NavBar from "../../../menu/navBar"
+import BackToMainPage from "../buttons/backToMainPage"
+import { getById } from "../../../fake_api/notes.api"
 import { Spinner } from "react-bootstrap"
 import { useParams, useHistory } from "react-router-dom"
+import buttons from "../buttons/buttons.module.css"
+import CommonLinkBtn from "../buttons/commonLinkBtn"
 
 const EditNotePage = () => {
     const history = useHistory()
@@ -25,10 +27,6 @@ const EditNotePage = () => {
         /* не забыть отцентровать спиннер */
     }
 
-    // function db(asd) {
-    //     console.log(asd)
-    // }
-
     return (
         <>
             <NavBar />
@@ -44,17 +42,17 @@ const EditNotePage = () => {
                     <textarea defaultValue={note.description}></textarea>
                 </div>
 
-                <div className="notes__btn">
-                    <button className="notes__btn-common notes__btn-open">
-                        Сохранить
-                    </button>
+                <div className={buttons.btns}>
+                    <CommonLinkBtn
+                        name="Сохранить"
+                        className={`${buttons.common} ${buttons.open}`}
+                    />
                     {/* Обновлять массив */}
-                    <button
-                        className="notes__btn-common notes__btn-open"
+                    <CommonLinkBtn
+                        name="Отменить"
+                        className={`${buttons.common} ${buttons.open}`}
                         onClick={handleClick}
-                    >
-                        Отменить
-                    </button>
+                    />
                 </div>
             </div>
         </>

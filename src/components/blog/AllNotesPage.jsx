@@ -2,8 +2,9 @@ import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import NavBar from "../../menu/navBar"
 import { AiOutlinePlusCircle } from "react-icons/ai"
-import AllNotes from "./AllNotes"
+import AllNotes from "./allNotes"
 import notes from "../../fake_api/notes.api"
+import buttons from "./buttons/buttons.module.css"
 
 const AllNotesPage = () => {
     const [newNotesArr, setNewNotesArr] = useState(notes)
@@ -37,10 +38,10 @@ const AllNotesPage = () => {
     return (
         <>
             <NavBar />
-            <div className="btn-div">
+            <div className={buttons.wrapper}>
                 <Link
                     to="/createnote"
-                    className="notes__btn-common notes__btn-add"
+                    className={`${buttons.common} ${buttons.add}`}
                 >
                     {<AiOutlinePlusCircle />} Добавить заметку
                 </Link>

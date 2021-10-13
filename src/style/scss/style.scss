@@ -43,10 +43,9 @@ img {
 	max-width: 100%;
 }
 
-#root {
+.container {
 	text-align: center;
 	margin: 0 auto;
-	width: 100%;
 }
 
 .navbar {
@@ -91,40 +90,11 @@ img {
 	}
 }
 
-.logInForm {
-	margin-top: 30px;
-}
-
-form {
-	display: flex;
-	height: 60px;
-	flex-wrap: wrap;
-	align-content: center;
-	justify-content: center;
-	align-items: center;
-}
-
-.css-xn6ruc > :not(style) {
-	margin: 5px 20px !important;
-	width: 24ch !important;
-}
-
-.form__buttons {
-	margin-top: 35px;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-content: center;
-	justify-content: center;
-	align-items: stretch;
-	text-align: center;
-}
-
 //кнопки на странице входа / регистрации
 .btns {
 	width: 250px;
 	height: 45px;
-	margin: 0 15px 10px 15px !important;
+	margin: 10px 15px 10px 15px !important;
 	&-first {
 		& > a {
 			color: #1717d5 !important;
@@ -138,22 +108,6 @@ form {
 			color: #d2d5ffea;
 		}
 	}
-}
-
-.regForm {
-	display: block;
-}
-
-//обязательно без . - это форма отправки на стр. регистрации
-regBoxForm {
-	display: flex;
-	height: 140px;
-	flex-wrap: nowrap;
-	align-content: center;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	margin-bottom: 20px;
 }
 
 .notes__main-block {
@@ -194,72 +148,6 @@ regBoxForm {
 	text-align: center;
 }
 
-//кнопки в заметках
-.notes__btn {
-	text-align: center;
-	margin: 15px 0;
-	&-common {
-		padding: 4px 9px;
-		border-radius: 5px;
-		color: #01050d;
-		font-size: 20px;
-		font-weight: 500;
-		outline: none;
-		margin: 5px;
-		& > a {
-			color: #000;
-			&:hover {
-				color: #fff;
-			}
-		}
-	}
-	&-open {
-		background-color: #aec4f1;
-		border: 2px solid #0c0c62;
-		transition: 0.3s linear;
-		box-shadow: 4px 3px 3px rgb(86 88 169 / 54%);
-		&:hover,
-		&:focus {
-			background-color: #5045c0;
-			color: #fff;
-			border: 2px solid #dae4ef;
-			box-shadow: 3px 3px 6px rgb(6 4 120 / 74%), -1px -1px 1px rgb(28 14 125 / 84%);
-		}
-	}
-	&-remove {
-		background-color: #efefef;
-		border: 2px solid #050506;
-		box-shadow: 3px 2px 5px #5c6282e0;
-		transition: 0.2s linear;
-		&:hover,
-		&:focus {
-			background-color: #f2131f;
-			border: 2px solid #fff5f5;
-			color: #fdfdfd;
-			box-shadow: 4px 3px 3px #f66666;
-		}
-	}
-	&-add {
-		background-color: #aec4f1;
-		border: 2px solid #0c0c62;
-		transition: 0.3s linear;
-		box-shadow: 4px 3px 3px rgb(86 88 169 / 54%);
-		&:hover,
-		&:focus {
-			background-color: #5045c0;
-			color: #fff;
-			border: 2px solid #dae4ef;
-			box-shadow: 3px 3px 6px rgb(6 4 120 / 74%), -1px -1px 1px rgb(28 14 125 / 84%);
-		}
-	}
-}
-
-.btn-div {
-	display: flex;
-	margin: 10px 0;
-	text-align: center;
-}
-
 .create-note {
 	justify-content: center;
 	align-items: center;
@@ -287,21 +175,4 @@ textarea {
 	text-align: justify;
 	min-height: 145px;
 	height: 180px;
-}
-
-.opened-notes {
-	width: 60%;
-	margin: 0 auto;
-	margin-top: 60px;
-	display: flex;
-	flex-direction: column;
-	align-content: center;
-	justify-content: center;
-	align-items: stretch;
-	& > h3 {
-		margin-bottom: 15px;
-	}
-	& > p {
-		text-align: justify;
-	}
 }

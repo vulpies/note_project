@@ -2,12 +2,12 @@ import React from "react"
 import { Route, Switch, Redirect } from "react-router-dom"
 import MainPage from "./menu/mainPage"
 import page404 from "./menu/page404"
-import Registration from "./components/registration/registration"
-import AllNotesPage from "./components/blog/AllNotesPage"
+import Registration from "./menu/registration"
+import AllNotesPage from "./components/blog/allNotesPage"
 import CreateNewNote from "./components/blog/createNewNote"
 import AdminPage from "./components/blog/adminPage"
-import NotePage from "./components/blog/notePage"
-import EditNotePage from "./components/blog/editNotePage"
+import NotePage from "./components/blog/opened_note/notePage"
+import EditNotePage from "./components/blog/edit_note/editNotePage"
 
 function App() {
     return (
