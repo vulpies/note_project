@@ -77,3 +77,17 @@
     box-shadow: 3px 3px 6px rgb(6 4 120 / 74%),
         -1px -1px 1px rgb(28 14 125 / 84%);
 }
+
+.reg {
+    height: 48px;
+    background-color: #abcaff8f;
+    border: 2px solid #0a2d9fe6;
+}
+
+.reg:hover,
+.reg:focus,
+.reg:active {
+    background-color: #074fcce0;
+    color: #fff;
+    box-shadow: 2px 2px 1px #545ccbc7;
+}

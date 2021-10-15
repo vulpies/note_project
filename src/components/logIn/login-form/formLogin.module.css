@@ -1,5 +1,5 @@
 .form {
-    margin-top: 10px;
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -7,10 +7,32 @@
     justify-content: center;
 }
 
+.wrapper {
+    width: 350px;
+    margin: 0 10px 15px 0;
+}
+
 .input {
-    align-content: center;
+    text-align: center;
     align-items: center;
     flex-direction: row;
     width: 320px;
     margin: 10px 15px;
+    height: 48px;
+    border-radius: 5px;
+    border: 1px solid #438bd1c7;
+}
+
+.input:active,
+.input:hover,
+.input:focus {
+    border: 2px solid #0d74db;
+}
+
+.input:focus-visible {
+    outline: none;
+}
+
+.error {
+    color: red;
 }
