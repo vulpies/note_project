@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
-import NavBar from "../../menu/navBar"
+import NavBar from "../../../menu/navBar"
 import { AiOutlinePlusCircle } from "react-icons/ai"
 import AllNotes from "./allNotes"
-import notes from "../../fake_api/notes.api"
-import buttons from "./buttons/buttons.module.css"
+import notes from "../../../fake_api/notes.api"
+import buttons from "../buttons/buttons.module.css"
 
 const AllNotesPage = () => {
     const [newNotesArr, setNewNotesArr] = useState(notes)

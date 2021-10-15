@@ -110,6 +110,14 @@ img {
 	}
 }
 
+.btn-check:active + .btn-primary:focus,
+.btn-check:checked + .btn-primary:focus,
+.btn-primary.active:focus,
+.btn-primary:active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+	box-shadow: 4px 3px 3px #f66666 !important;
+}
+
 .notes__main-block {
 	display: flex;
 	flex-direction: row;
@@ -175,4 +183,9 @@ textarea {
 	text-align: justify;
 	min-height: 145px;
 	height: 180px;
+}
+
+.floating-label > input:focus {
+	border-color: #d3d5d8 !important;
+	box-shadow: 0 0 0 transparent !important;
 }

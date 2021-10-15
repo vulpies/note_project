@@ -1,7 +1,8 @@
 import React from "react"
 
 import FormButtons from "../components/logIn/login-buttons/formButtons"
-import FormLogIn from "../components/logIn/login-form/formLogIn"
+// import FormLogIn from "../components/logIn/login-form/formLogIn"
+import LoginPage from "../components/logIn/login-form/loginPage"
 
 const MainPage = () => {
     return (
@@ -13,7 +14,7 @@ const MainPage = () => {
                     зарегистрируйтесь.
                 </p>
 
-                <FormLogIn />
+                <LoginPage />
                 <FormButtons />
             </div>
         </>

@@ -2,17 +2,24 @@ import React, { useState } from "react"
 import NavBar from "../../menu/navBar"
 import BackToMainPage from "./buttons/backToMainPage"
 import buttons from "./buttons/buttons.module.css"
-import CommonLinkBtn from "./buttons/commonLinkBtn"
+import ModalSave from "./modal/modalSave"
 
 const CreateNewNote = () => {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
+    const [text, setText] = useState("")
 
-    const addNewNote = (e) => {
-        e.preventDefault()
+    const [show, setShow] = useState(false)
+
+    const handleClick = () => {
+        setShow(true)
+        addNewNote()
+    }
+
+    const addNewNote = () => {
         if (title.trim() === "" || description.trim() === "") {
-            alert("Заголовок и/или описание не может быть пустым")
-            //setNewNotesArr(newNotesArr) возвращает текущий массив
+            setText("Заголовок и/или описание не может быть пустым")
+            // setNewNotesArr(newNotesArr) возвращает текущий массив
         } else {
             const newNote = {
                 _id: Date.now(),
@@ -21,11 +28,13 @@ const CreateNewNote = () => {
             }
 
             console.log(newNote)
-            alert("Новая заметка успешно создана")
             setTitle("")
             setDescription("")
+            setText("Новая заметка успешно создана")
         }
     }
+
+    console.log(text)
 
     return (
         <>
@@ -57,10 +66,10 @@ const CreateNewNote = () => {
                 </div>
 
                 <div className={buttons.btns}>
-                    <CommonLinkBtn
+                    <ModalSave
+                        text={text}
                         name="Добавить"
-                        className={`${buttons.common} ${buttons.open}`}
-                        onClick={(e) => addNewNote(e)}
+                        addNewNote={addNewNote}
                     />
                 </div>
             </div>

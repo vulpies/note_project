@@ -28,7 +28,7 @@ const OpenModal = ({ text, name, onClick }) => {
                     <CommonLinkBtn
                         className={`${buttons.common} ${buttons.remove}`}
                         onClick={handleClose}
-                        name="Закрыть"
+                        name="X"
                     />
                 </Modal.Header>
 
