@@ -1,0 +1,22 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    background-color: #94c0fe6e;
+    width: 75%;
+    margin: 130px auto 20px;
+    border: 1px solid #0d74db;
+}
+
+.text {
+    padding: 0 10px;
+    width: 50%;
+}
+
+.form {
+    border-left: 1px solid #2042aa;
+    width: 50%;
+}

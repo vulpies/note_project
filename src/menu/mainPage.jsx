@@ -1,13 +1,7 @@
-import React, { useState } from "react"
+import React from "react"
 import FormButtons from "../components/logIn/login-buttons/formButtons"
-import LoginPage from "../components/logIn/login-form/loginPage"
-import AllNotesPage from "../components/blog/notes/allNotesPage"
 
 const MainPage = () => {
-    const [isSubmitted, setIsSubmitted] = useState(false)
-    function submitForm() {
-        setIsSubmitted(true)
-    }
     return (
         <>
             <div className="main main__div">
@@ -17,11 +11,6 @@ const MainPage = () => {
                     зарегистрируйтесь.
                 </p>
 
-                {!isSubmitted ? (
-                    <LoginPage submitForm={submitForm} />
-                ) : (
-                    <AllNotesPage />
-                )}
                 <FormButtons />
             </div>
         </>
