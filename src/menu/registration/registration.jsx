@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import NavBar from "../navBar"
 import CommonForm from "../../components/logIn/login-form/commonForm"
 import styles from "./registration.module.css"
@@ -9,8 +10,18 @@ const Registration = () => {
             <NavBar />
             <div className={styles.wrapper}>
                 <div className={styles.text}>
-                    <h2>Регистрация</h2>
-                    <p>Пожалуйста, заполните форму ниже.</p>
+                    <p className={styles.info}>
+                        Заполните данную форму, чтобы зарегистрироваться в
+                        системе и получить доступ к контенту.
+                    </p>
+                    <p className={styles.info}>
+                        После успешной регистрации вы будете автоматически
+                        перенаправлены на главную страницу блога.
+                    </p>
+                    <p className={styles.info}>
+                        Если у вас уже есть аккaунт,
+                        <Link to="/login">войдите</Link> в систему
+                    </p>
                 </div>
                 <div className={styles.form}>
                     <CommonForm

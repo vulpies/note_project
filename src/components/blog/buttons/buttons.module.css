@@ -92,3 +92,48 @@
     color: #fff;
     box-shadow: 2px 2px 1px #545ccbc7;
 }
+
+.mainBtns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto 20px auto;
+}
+
+.form {
+    height: 48px;
+    width: 230px;
+    border-radius: 5px;
+    color: #01050d;
+    font-size: 20px;
+    font-weight: 500;
+    outline: none;
+    padding: 10px;
+    margin: 0 15px;
+    justify-content: center;
+}
+
+.logIn {
+    background-color: #fff;
+    border: 1px solid #234fe0e6;
+    text-align: center;
+    color: #2623ed;
+}
+
+.logIn:hover,
+.logIn:active,
+.logIn:focus {
+    background-color: #4294f1d6;
+    border: 1px solid #112977e6;
+    color: #f6f6ff;
+    box-shadow: 1px 1px 4px #062a93;
+    outline: none;
+}
+
+.reg2 {
+    background-color: #abcaff8f;
+    border: 2px solid #0a2d9fe6;
+}

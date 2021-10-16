@@ -39,10 +39,11 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: red;
+  color: #1a64e4fc;
+  padding-left: 4px;
 }
 a:hover {
-  color: green;
+  color: #0a2d9fe6;
 }
 
 img {

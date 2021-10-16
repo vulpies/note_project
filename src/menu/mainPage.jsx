@@ -1,5 +1,6 @@
 import React from "react"
-import FormButtons from "../components/logIn/login-buttons/formButtons"
+import { Link } from "react-router-dom"
+import buttons from "../components/blog/buttons/buttons.module.css"
 
 const MainPage = () => {
     return (
@@ -10,8 +11,20 @@ const MainPage = () => {
                     Для просмотра контента, пожалуйста, войдите или
                     зарегистрируйтесь.
                 </p>
-
-                <FormButtons />
+                <div className={buttons.mainBtns}>
+                    <Link
+                        to="/login"
+                        className={`${buttons.form} ${buttons.logIn}`}
+                    >
+                        Войти
+                    </Link>
+                    <Link
+                        to="/registration"
+                        className={`${buttons.form} ${buttons.reg}`}
+                    >
+                        Зарегистрироваться
+                    </Link>
+                </div>
             </div>
         </>
     )

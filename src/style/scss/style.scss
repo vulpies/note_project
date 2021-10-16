@@ -33,9 +33,10 @@ a {
 	display: inline-flex;
 	text-decoration: none;
 	align-items: center;
-	color: red;
+	color: #1a64e4fc;
+	padding: 0 4px;
 	&:hover {
-		color: green;
+		color: #0a2d9fe6;
 	}
 }
 
