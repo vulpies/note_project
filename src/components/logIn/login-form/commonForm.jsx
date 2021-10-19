@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react"
 import CommonBtn from "../../blog/buttons/commonLinkBtn"
 import buttons from "../../blog/buttons/buttons.module.css"
 import style from "./commonForm.module.css"
-// import AllNotesPage from "../../blog/notes/allNotesPage"
-import { Link } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 const CommonForm = ({ formName, btnName }) => {
     const [values, setValues] = useState({ email: "", password: "" })
     const [errors, setErrors] = useState({})
     const [isSubmit, setIsSubmit] = useState(false)
+
+    let history = useHistory()
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -20,6 +21,10 @@ const CommonForm = ({ formName, btnName }) => {
         e.preventDefault()
         setErrors(validate(values))
         setIsSubmit(true)
+
+        if (isSubmit === true) {
+            history.push("/notes")
+        }
     }
 
     useEffect(() => {
@@ -43,19 +48,14 @@ const CommonForm = ({ formName, btnName }) => {
             errors.password = "Обязательно для заполнения"
         } else if (values.password.length < 6) {
             errors.password = "Пароль должен содержать минимум 6 символов"
-        } else if (values.password.length > 20) {
-            errors.password = "Пароль может содержать не более 20 символов"
+        } else if (values.password.length > 15) {
+            errors.password = "Пароль может содержать не более 15 символов"
         }
         return errors
     }
 
     return (
         <>
-            {Object.keys(errors).length === 0 && isSubmit ? (
-                <Link path="/notes" /> //don't work????
-            ) : (
-                ""
-            )}
             <form className={style.form} onSubmit={handleSubmit}>
                 <h2>{formName}</h2>
                 <div className={style.wrapper}>
