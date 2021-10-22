@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import CommonBtn from "../../blog/buttons/commonLinkBtn"
 import buttons from "../../blog/buttons/buttons.module.css"
 import style from "./commonForm.module.css"
@@ -7,7 +7,6 @@ import { useHistory } from "react-router-dom"
 const CommonForm = ({ formName, btnName }) => {
     const [values, setValues] = useState({ email: "", password: "" })
     const [errors, setErrors] = useState({})
-    const [isSubmit, setIsSubmit] = useState(false)
 
     let history = useHistory()
 
@@ -20,18 +19,11 @@ const CommonForm = ({ formName, btnName }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setErrors(validate(values))
-        setIsSubmit(true)
 
-        if (isSubmit === true) {
+        if (values.email && values.password) {
             history.push("/notes")
         }
     }
-
-    useEffect(() => {
-        if (Object.keys(errors).length === 0 && isSubmit) {
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [errors])
 
     const validate = (value) => {
         const errors = {}
