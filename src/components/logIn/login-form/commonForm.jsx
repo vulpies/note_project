@@ -3,10 +3,12 @@ import CommonBtn from "../../blog/buttons/commonLinkBtn"
 import buttons from "../../blog/buttons/buttons.module.css"
 import style from "./commonForm.module.css"
 import { useHistory } from "react-router-dom"
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai"
 
 const CommonForm = ({ formName, btnName }) => {
     const [values, setValues] = useState({ email: "", password: "" })
     const [errors, setErrors] = useState({})
+    const [showPass, setShowPass] = useState(false)
 
     let history = useHistory()
 
@@ -23,6 +25,11 @@ const CommonForm = ({ formName, btnName }) => {
         if (values.email && values.password) {
             history.push("/notes")
         }
+    }
+
+    const togglePassVisible = (e) => {
+        e.preventDefault()
+        setShowPass((prevState) => !prevState)
     }
 
     const validate = (value) => {
@@ -68,19 +75,33 @@ const CommonForm = ({ formName, btnName }) => {
 
                 <div className={style.wrapper}>
                     <label htmlFor="password">Password</label>
-                    <input
-                        id="password"
-                        type="password"
-                        name="password"
-                        className={style.input}
-                        placeholder="Введите пароль"
-                        value={values.password}
-                        onChange={handleChange}
-                    />
+                    <div className={style.passWrap}>
+                        <input
+                            id="password"
+                            type={showPass ? "text" : "password"}
+                            name="password"
+                            className={style.input}
+                            placeholder="Введите пароль"
+                            value={values.password}
+                            onChange={handleChange}
+                        />
+
+                        <button
+                            className={style.passBtn}
+                            onClick={togglePassVisible}
+                        >
+                            {showPass ? (
+                                <AiOutlineEye />
+                            ) : (
+                                <AiOutlineEyeInvisible />
+                            )}
+                        </button>
+                    </div>
                     {errors.password && (
                         <p className={style.error}>{errors.password}</p>
                     )}
                 </div>
+
                 <div className={style.btn}>
                     <CommonBtn
                         className={`${buttons.common} ${buttons.reg}`}

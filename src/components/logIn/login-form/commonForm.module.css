@@ -46,3 +46,16 @@ h2 {
 .btn {
     margin: 10px 0;
 }
+
+.passWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.passBtn {
+    margin-left: -50px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
