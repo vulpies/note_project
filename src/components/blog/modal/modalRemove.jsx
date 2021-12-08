@@ -40,12 +40,12 @@ const OpenModal = ({ text, name, onClick }) => {
                     <CommonLinkBtn
                         className={`${buttons.common} ${buttons.remove}`}
                         onClick={onClick}
-                        name="Да, удалить"
+                        name="Удалить"
                     />
                     <CommonLinkBtn
                         className={`${buttons.common} ${buttons.open}`}
                         onClick={handleClose}
-                        name="Нет, отменить"
+                        name="Отмена"
                     />
                 </Modal.Footer>
             </Modal>

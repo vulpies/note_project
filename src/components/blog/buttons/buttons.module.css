@@ -1,6 +1,10 @@
 .btns {
+    display: flex;
     text-align: center;
     margin: 15px;
+    align-items: center;
+    align-content: stretch;
+    justify-content: center;
 }
 
 .wrapper {
@@ -35,6 +39,7 @@
     border: 2px solid #050506;
     box-shadow: 3px 2px 5px #5c6282e0;
     transition: 0.2s linear;
+    padding: 3px 8px;
 }
 
 .remove:hover,

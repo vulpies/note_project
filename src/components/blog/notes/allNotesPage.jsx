@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
-import NavBar from "../../../menu/navBar"
+import NavBar from "../../../menu/navbar/navBar"
 import { AiOutlinePlusCircle } from "react-icons/ai"
 import AllNotes from "./allNotes"
 import notes from "../../../fake_api/notes.api"

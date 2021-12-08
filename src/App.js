@@ -15,8 +15,8 @@ function App() {
         <div>
             <Switch>
                 <Route path="/" exact component={MainPage} />
-                <Route path="/admin" exact component={AdminPage} />
-                <Route path="/login" exact component={LoginPage} />
+                <Route path="/admin" component={AdminPage} />
+                <Route path="/login" component={LoginPage} />
                 <Route path="/registration" component={Registration} />
                 <Route
                     path="/notes/editnote/:noteId"

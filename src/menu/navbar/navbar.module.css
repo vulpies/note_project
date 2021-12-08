@@ -1,0 +1,48 @@
+.navbar {
+    margin-top: 1rem;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar > li {
+    padding-left: 15px;
+}
+
+.navbar > li > a {
+    display: inline-flex;
+    text-decoration: none;
+    color: #1799e6;
+    font-weight: bold;
+    text-shadow: 0px 0px 1px #110674;
+    font-size: 22px;
+    outline: none;
+}
+
+.navbar > li > a:hover,
+.navbar > li > a:focus {
+    color: #1b2ebb;
+    text-shadow: 0px 0px 1px #7e87c2ea;
+}
+
+/* добавить класс при скролле
+.sticky {
+    margin-top: 1rem;
+    margin-bottom: 15px;
+    position: sticky;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    border-bottom: 1px solid #2c4eb0;
+} */
+
+.admin > a {
+    color: red !important;
+    text-shadow: 1px 1px 1px #000 !important;
+}
+
+.admin > a:hover,
+.admin > a:focus {
+    color: #ffc107 !important;
+    text-shadow: 1px 1px 1px #5f0606 !important;
+}

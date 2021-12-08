@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import NavBar from "../../../menu/navBar"
+import NavBar from "../../../menu/navbar/navBar"
 import { Link, useParams } from "react-router-dom"
 import BackToMainPage from "../buttons/backToMainPage"
 import { getById } from "../../../fake_api/notes.api"
@@ -20,8 +20,13 @@ const NotePage = () => {
     }, [noteId])
 
     if (note === "loading") {
-        return <Spinner animation="border" variant="primary" />
-        /* не забыть отцентровать спиннер */
+        return (
+            <Spinner
+                animation="border"
+                variant="primary"
+                style={{ marginTop: 200 }}
+            />
+        )
     }
 
     return (

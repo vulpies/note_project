@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import NavBar from "../../menu/navBar"
+import NavBar from "../../menu/navbar/navBar"
 import BackToMainPage from "./buttons/backToMainPage"
 import buttons from "./buttons/buttons.module.css"
 import ModalSave from "./modal/modalSave"

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import CommonBtn from "../../blog/buttons/commonLinkBtn"
 import buttons from "../../blog/buttons/buttons.module.css"
 import style from "./commonForm.module.css"
@@ -18,11 +18,17 @@ const CommonForm = ({ formName, btnName }) => {
         setValues({ ...values, [name]: value })
     }
 
+    useEffect(() => {
+        const listOfErrors = validate(values)
+        if (!listOfErrors.email && !listOfErrors.password) {
+            setErrors(listOfErrors)
+        }
+    }, [values])
+
     const handleSubmit = (e) => {
         e.preventDefault()
         setErrors(validate(values))
-
-        if (values.email && values.password) {
+        if (values.email && values.password && !errors.email) {
             history.push("/notes")
         }
     }
@@ -45,8 +51,8 @@ const CommonForm = ({ formName, btnName }) => {
 
         if (!value.password) {
             errors.password = "Обязательно для заполнения"
-        } else if (values.password.length < 6) {
-            errors.password = "Пароль должен содержать минимум 6 символов"
+        } else if (values.password.length < 5) {
+            errors.password = "Пароль должен содержать минимум 5 символов"
         } else if (values.password.length > 15) {
             errors.password = "Пароль может содержать не более 15 символов"
         }

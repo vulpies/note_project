@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import NavBar from "../../../menu/navBar"
+import NavBar from "../../../menu/navbar/navBar"
 import BackToMainPage from "../buttons/backToMainPage"
 import { getById } from "../../../fake_api/notes.api"
 import { Spinner } from "react-bootstrap"
@@ -16,6 +16,8 @@ const EditNotePage = () => {
     const { noteId } = useParams()
     const [note, setNote] = useState("loading")
 
+    debugger
+
     useEffect(() => {
         setNote("loading")
         const data = getById(noteId)
@@ -23,8 +25,13 @@ const EditNotePage = () => {
     }, [noteId])
 
     if (note === "loading") {
-        return <Spinner animation="border" variant="primary" />
-        /* не забыть отцентровать спиннер */
+        return (
+            <Spinner
+                animation="border"
+                variant="primary"
+                style={{ marginTop: 200 }}
+            />
+        )
     }
 
     return (

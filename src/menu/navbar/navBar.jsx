@@ -1,10 +1,11 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import nav from "./navbar.module.css"
 
 const NavBar = () => {
     return (
-        <ul className="navbar justify-content-end">
-            <li className="admin-nav">
+        <ul className={nav.navbar}>
+            <li className={nav.admin}>
                 <Link to="/admin">Админка</Link>
             </li>
             <li>

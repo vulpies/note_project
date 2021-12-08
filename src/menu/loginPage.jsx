@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import CommonForm from "../components/logIn/login-form/commonForm"
-import NavBar from "./navBar"
+import NavBar from "./navbar/navBar"
 import styles from "./registration/registration.module.css"
 
 const LoginPage = () => {
