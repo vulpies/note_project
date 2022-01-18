@@ -1,0 +1,29 @@
+.create {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.subtitle {
+}
+
+.texts > input[type="text"],
+.texts > textarea {
+    width: 50%;
+    margin: 5px auto 20px auto;
+    padding: 10px 13px;
+    background: #d8e3fa4d;
+    display: block;
+    font-size: 22px;
+    color: #1d054d;
+    border: 2px solid #161685;
+}

@@ -1,8 +1,9 @@
 import React, { useState } from "react"
-import NavBar from "../../menu/navbar/navBar"
-import BackToMainPage from "./buttons/backToMainPage"
-import buttons from "./buttons/buttons.module.css"
-import ModalSave from "./modal/modalSave"
+import NavBar from "../../../menu/navbar/navBar"
+import BackToMainPage from "../buttons/backToMainPage"
+import buttons from "../buttons/buttons.module.css"
+import ModalSave from "../modal/modalSave"
+import styles from "./createNote.module.css"
 
 const CreateNewNote = () => {
     const [title, setTitle] = useState("")
@@ -41,11 +42,11 @@ const CreateNewNote = () => {
             <NavBar />
             <BackToMainPage />
 
-            <div className="create-note">
-                <h2 className="create-note__title">Создание новой заметки</h2>
+            <div className={styles.create}>
+                <h2 className={styles.title}>Создание новой заметки</h2>
 
-                <div className="create-note__texts">
-                    <p className="create-note__texts-subtitle">Заголовок:</p>
+                <div className={styles.texts}>
+                    <p className={styles.subtitle}>Заголовок:</p>
                     <input
                         type="text"
                         name="title"
@@ -53,7 +54,7 @@ const CreateNewNote = () => {
                         onChange={(e) => setTitle(e.target.value)}
                     ></input>
 
-                    <p className="create-note__texts-subtitle">Описание:</p>
+                    <p className={styles.subtitle}>Описание:</p>
 
                     <textarea
                         type="text"

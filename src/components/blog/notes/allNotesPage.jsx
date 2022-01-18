@@ -5,6 +5,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai"
 import AllNotes from "./allNotes"
 import notes from "../../../fake_api/notes.api"
 import buttons from "../buttons/buttons.module.css"
+import styles from "./notes.module.css"
 
 const AllNotesPage = () => {
     const [newNotesArr, setNewNotesArr] = useState(notes)
@@ -27,7 +28,9 @@ const AllNotesPage = () => {
             )
         })
     } else {
-        singleNote = <h2 className="blindMsg">Сейчас у вас нет заметок</h2>
+        singleNote = (
+            <h2 className={styles.blindMsg}>Сейчас у вас нет заметок</h2>
+        )
     }
 
     return (
@@ -42,7 +45,7 @@ const AllNotesPage = () => {
                 </Link>
             </div>
 
-            <div className="row notes__main-block">{singleNote}</div>
+            <div className={`row ${styles.mainBlock}`}>{singleNote}</div>
         </>
     )
 }

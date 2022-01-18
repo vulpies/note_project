@@ -6,6 +6,7 @@ import { Spinner } from "react-bootstrap"
 import { useParams, useHistory } from "react-router-dom"
 import buttons from "../buttons/buttons.module.css"
 import CommonLinkBtn from "../buttons/commonLinkBtn"
+import styles from "../create_note/createNote.module.css"
 
 const EditNotePage = () => {
     const history = useHistory()
@@ -38,14 +39,14 @@ const EditNotePage = () => {
         <>
             <NavBar />
             <BackToMainPage />
-            <div className="create-note">
-                <h2 className="create-note__title">Редактирование заметки</h2>
+            <div className={styles.create}>
+                <h2 className={styles.title}>Редактирование заметки</h2>
 
-                <div className="create-note__texts">
-                    <p className="create-note__texts-subtitle">Название:</p>
+                <div className={styles.texts}>
+                    <p className={styles.subtitle}>Название:</p>
                     <input type="text" defaultValue={note.title} />
 
-                    <p className="create-note__texts-subtitle">Описание:</p>
+                    <p className={styles.subtitle}>Описание:</p>
                     <textarea defaultValue={note.description}></textarea>
                 </div>
 

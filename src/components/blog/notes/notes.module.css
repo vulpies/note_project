@@ -1,0 +1,50 @@
+.singleBlock {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.top {
+    max-height: 280px;
+    min-height: 100px;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.title {
+    padding-bottom: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.subtitle {
+    width: 100%;
+}
+
+.blindMsg {
+    margin-top: 120px;
+    text-align: center;
+}
+
+.mainBlock {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    margin-top: 35px;
+    text-align: justify;
+}

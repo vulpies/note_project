@@ -4,10 +4,10 @@ import MainPage from "./menu/mainPage"
 import page404 from "./menu/page404"
 import Registration from "./menu/registration/registration"
 import AllNotesPage from "./components/blog/notes/allNotesPage"
-import CreateNewNote from "./components/blog/createNewNote"
-import AdminPage from "./components/blog/adminPage"
+import CreateNewNote from "./components/blog/create_note/createNewNote"
 import NotePage from "./components/blog/opened_note/notePage"
 import EditNotePage from "./components/blog/edit_note/editNotePage"
+import AdminPage from "./components/blog/admin_page/adminPage"
 import LoginPage from "./menu/loginPage"
 
 function App() {

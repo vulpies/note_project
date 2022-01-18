@@ -3,13 +3,16 @@ import { Link } from "react-router-dom"
 import CommonBtn from "../buttons/commonLinkBtn"
 import buttons from "../buttons/buttons.module.css"
 import OpenModal from "../modal/modalRemove"
+import styles from "./notes.module.css"
 
 const AllNotes = ({ onRemove, _id, title, description }) => {
     return (
-        <div className="notes__single-block col-xl-3 col-md-4 col-sm-6 col-12">
-            <div className="notes__top-part">
-                <h4 className="notes__single-block-title">{title}</h4>
-                <p className="notes__single-block-subtitle">{description}</p>
+        <div
+            className={`${styles.singleBlock} col-xl-3 col-md-4 col-sm-6 col-12`}
+        >
+            <div className={styles.top}>
+                <h4 className={styles.title}>{title}</h4>
+                <p className={styles.subtitle}>{description}</p>
             </div>
 
             <div className={buttons.btns}>
