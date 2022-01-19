@@ -1,31 +1,37 @@
 import React, { useEffect, useState } from "react"
 import NavBar from "../../../menu/navbar/navBar"
 import BackToMainPage from "../buttons/backToMainPage"
-import { getById } from "../../../fake_api/notes.api"
 import { Spinner } from "react-bootstrap"
 import { useParams, useHistory } from "react-router-dom"
 import buttons from "../buttons/buttons.module.css"
 import CommonLinkBtn from "../buttons/commonLinkBtn"
 import styles from "../create_note/createNote.module.css"
+import { useDispatch, useSelector } from "react-redux"
+import { getNoteById, UPD_NOTE } from "../../../store/notes-actions"
 
 const EditNotePage = () => {
+    const dispatch = useDispatch()
+    const { noteId } = useParams()
     const history = useHistory()
     const handleClick = () => {
         history.push(`/notes/${noteId}`)
     }
+    const note = useSelector(getNoteById(noteId))
+    console.log(note)
 
-    const { noteId } = useParams()
-    const [note, setNote] = useState("loading")
+    const handleChange = () => {
+        const updNote = dispatch({
+            type: UPD_NOTE,
+            payload: {
+                id: note._id,
+                title: note.title,
+                description: note.description,
+            },
+        })
+        console.log(updNote)
+    }
 
-    debugger
-
-    useEffect(() => {
-        setNote("loading")
-        const data = getById(noteId)
-        if (data) setNote(data)
-    }, [noteId])
-
-    if (note === "loading") {
+    if (!note) {
         return (
             <Spinner
                 animation="border"
@@ -54,8 +60,8 @@ const EditNotePage = () => {
                     <CommonLinkBtn
                         name="Сохранить"
                         className={`${buttons.common} ${buttons.open}`}
+                        onClick={handleChange}
                     />
-                    {/* Обновлять массив */}
                     <CommonLinkBtn
                         name="Отменить"
                         className={`${buttons.common} ${buttons.open}`}

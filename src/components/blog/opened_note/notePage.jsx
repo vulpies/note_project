@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import NavBar from "../../../menu/navbar/navBar"
 import { Link, useParams } from "react-router-dom"
 import BackToMainPage from "../buttons/backToMainPage"
-import { getById } from "../../../fake_api/notes.api"
 import { Spinner } from "react-bootstrap"
 import CommonLinkBtn from "../buttons/commonLinkBtn"
 import buttons from "../buttons/buttons.module.css"
 import notesStyle from "./notePage.module.css"
+import { useDispatch, useSelector } from "react-redux"
+import { getNoteById } from "../../../store/notes-actions"
 
 const NotePage = () => {
+    const dispatch = useDispatch()
     const { noteId } = useParams()
+    const note = useSelector(getNoteById(noteId))
+    console.log(note)
 
-    const [note, setNote] = useState("loading")
-
-    useEffect(() => {
-        setNote("loading")
-        const data = getById(noteId)
-        if (data) setNote(data)
-    }, [noteId])
-
-    if (note === "loading") {
+    if (!note) {
         return (
             <Spinner
                 animation="border"

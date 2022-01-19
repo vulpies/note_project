@@ -1,11 +1,17 @@
 import React, { useState } from "react"
+import { useDispatch } from "react-redux"
+import { useHistory } from "react-router-dom"
 import NavBar from "../../../menu/navbar/navBar"
+import { ADD_NOTE } from "../../../store/notes-actions"
 import BackToMainPage from "../buttons/backToMainPage"
 import buttons from "../buttons/buttons.module.css"
 import ModalSave from "../modal/modalSave"
 import styles from "./createNote.module.css"
 
 const CreateNewNote = () => {
+    const dispatch = useDispatch()
+    const history = useHistory()
+
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [text, setText] = useState("")
@@ -20,22 +26,23 @@ const CreateNewNote = () => {
     const addNewNote = () => {
         if (title.trim() === "" || description.trim() === "") {
             setText("Заголовок и/или описание не может быть пустым")
-            // setNewNotesArr(newNotesArr) возвращает текущий массив
         } else {
-            const newNote = {
-                _id: Date.now(),
-                title: title.trim(),
-                description: description.trim(),
-            }
+            const newNote = dispatch({
+                type: ADD_NOTE,
+                payload: {
+                    _id: Date.now(),
+                    title: title.trim(),
+                    description: description.trim(),
+                },
+            })
 
             console.log(newNote)
             setTitle("")
             setDescription("")
             setText("Новая заметка успешно создана")
+            history.push(`/notes`) // если есть хистори, то нет модалки
         }
     }
-
-    console.log(text)
 
     return (
         <>
