@@ -6,11 +6,10 @@ import { Spinner } from "react-bootstrap"
 import CommonLinkBtn from "../buttons/commonLinkBtn"
 import buttons from "../buttons/buttons.module.css"
 import notesStyle from "./notePage.module.css"
-import { useDispatch, useSelector } from "react-redux"
 import { getNoteById } from "../../../store/notes-actions"
+import { useSelector } from "react-redux"
 
 const NotePage = () => {
-    const dispatch = useDispatch()
     const { noteId } = useParams()
     const note = useSelector(getNoteById(noteId))
     console.log(note)

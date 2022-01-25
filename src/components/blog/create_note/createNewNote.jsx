@@ -18,6 +18,7 @@ const CreateNewNote = () => {
 
     const [show, setShow] = useState(false)
 
+    //передается из модалки
     const handleClick = () => {
         setShow(true)
         addNewNote()
