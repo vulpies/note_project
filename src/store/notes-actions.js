@@ -7,3 +7,9 @@ export const getNoteById = (noteId) => (state) => {
         return state.notesReducer.notes.find((n) => n._id === Number(noteId))
     }
 }
+
+export const removeNoteById = (noteId) => (state) => {
+    if (state.notesReducer.notes) {
+        return state.notesReducer.notes.filter((n) => n._id !== Number(noteId))
+    }
+}

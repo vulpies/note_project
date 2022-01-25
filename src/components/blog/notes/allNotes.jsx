@@ -5,9 +5,17 @@ import buttons from "../buttons/buttons.module.css"
 import OpenModal from "../modal/modalRemove"
 import styles from "./notes.module.css"
 import { useSelector } from "react-redux"
+// import { removeNoteById } from "../../../store/notes-actions"
+// import { useParams } from "react-router-dom"
 
 const AllNotes = () => {
     const notes = useSelector((state) => state.notesReducer.notes)
+    // const { noteId } = useParams()
+    // const remove = useSelector(removeNoteById(noteId))
+
+    // const removeNote = (noteId) => {
+    //     remove(noteId)
+    // }
 
     return (
         <>
@@ -30,7 +38,7 @@ const AllNotes = () => {
                         <OpenModal
                             name="Удалить"
                             text="Подтверждаете удаление заметки?"
-                            // onClick={() => onRemove(note._id)}
+                            // onClick={}
                         />
                     </div>
                 </div>

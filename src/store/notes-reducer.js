@@ -1,4 +1,4 @@
-import { ADD_NOTE, UPD_NOTE } from "./notes-actions"
+import { ADD_NOTE, REMOVE_NOTE, UPD_NOTE } from "./notes-actions"
 
 const initialState = {
     notes: [],
@@ -22,6 +22,12 @@ export const notesReducer = (state = initialState, action) => {
                         return note
                     }),
                 ],
+            }
+        }
+        case REMOVE_NOTE: {
+            const { id } = action.payload
+            return {
+                notes: [...state.notes.filter((n) => n._id !== id)],
             }
         }
         default:
