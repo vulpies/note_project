@@ -54,7 +54,8 @@ h2 {
 }
 
 .passBtn {
-    margin-left: -50px;
+    position: absolute;
+    margin: 17px 0 0 -50px;
     background: transparent;
     border: none;
     outline: none;

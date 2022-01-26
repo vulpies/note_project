@@ -90,6 +90,15 @@
     border: 2px solid #0a2d9fe6;
 }
 
+.reg:disabled {
+    background-color: #abcaff8f;
+    border: 2px solid #0a2d9fe6;
+}
+
+.reg:disabled:hover {
+    background-color: #abcaff8f;
+}
+
 .reg:hover,
 .reg:focus,
 .reg:active {
