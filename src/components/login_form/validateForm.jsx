@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
-import style from "./commonForm.module.css"
-import buttons from "../../blog/buttons/buttons.module.css"
+import style from "./validateForm.module.css"
+import buttons from "../buttons/buttons.module.css"
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai"
 import { useHistory } from "react-router-dom"
 
@@ -16,20 +16,18 @@ const ValidateForm = ({ formName, btnName }) => {
     const {
         register,
         handleSubmit,
-        reset,
         formState: { errors, isValid },
-    } = useForm({ mode: "onChange" })
+    } = useForm({ mode: "onBlur" })
 
     const onSubmit = () => {
-        alert("Добро пожаловать!")
-        reset()
+        // alert("Добро пожаловать!")
         history.push("/notes")
     }
 
     let history = useHistory()
 
     return (
-        <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+        <form className={style.form} onSubmit={handleSubmit}>
             <h2>{formName}</h2>
             <div className={style.wrapper}>
                 <input

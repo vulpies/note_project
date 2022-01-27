@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import ValidateForm from "../../components/logIn/login-form/validateForm"
-import NavBar from "../navbar/navBar"
+import ValidateForm from "../../components/login_form/validateForm"
+import NavBar from "../../components/navbar/navBar"
 import styles from "./registration.module.css"
 
 const Registration = () => {

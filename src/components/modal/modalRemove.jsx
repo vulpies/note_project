@@ -5,7 +5,7 @@ import buttons from "../buttons/buttons.module.css"
 import CommonLinkBtn from "../buttons/commonLinkBtn"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
-import { removeNoteById } from "../../../store/notes-actions"
+import { removeNoteById } from "../../store/notes-actions"
 
 const OpenModal = ({ text, name }) => {
     const [show, setShow] = useState(false)

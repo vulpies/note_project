@@ -1,12 +1,12 @@
 import React from "react"
-import NavBar from "../../../menu/navbar/navBar"
+import NavBar from "../../components/navbar/navBar"
 import { Link, useParams } from "react-router-dom"
-import BackToMainPage from "../buttons/backToMainPage"
+import BackToMainPage from "../../components/buttons/backToMainPage"
 import { Spinner } from "react-bootstrap"
-import CommonLinkBtn from "../buttons/commonLinkBtn"
-import buttons from "../buttons/buttons.module.css"
+import CommonLinkBtn from "../../components/buttons/commonLinkBtn"
+import buttons from "../../components/buttons/buttons.module.css"
 import notesStyle from "./notePage.module.css"
-import { getNoteById } from "../../../store/notes-actions"
+import { getNoteById } from "../../store/notes-actions"
 import { useSelector } from "react-redux"
 
 const NotePage = () => {
@@ -30,7 +30,9 @@ const NotePage = () => {
             <BackToMainPage />
             <div className={notesStyle.open}>
                 <h3>{note.title}</h3>
-                <p>{note.description}</p>
+                <p>
+                    <pre>{note.description}</pre>
+                </p>
 
                 <div className={buttons.btns}>
                     <Link to={`/notes/editnote/${noteId}`}>

@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import buttons from "../components/blog/buttons/buttons.module.css"
+import buttons from "../components/buttons/buttons.module.css"
 
 const MainPage = () => {
     return (

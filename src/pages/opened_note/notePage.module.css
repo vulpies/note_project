@@ -6,7 +6,7 @@
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
 }
 
 .open > h3 {
@@ -15,4 +15,6 @@
 
 .open > p {
     text-align: justify;
+    width: 100%;
+    hyphens: auto;
 }

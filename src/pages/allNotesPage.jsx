@@ -1,10 +1,10 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import NavBar from "../../../menu/navbar/navBar"
+import NavBar from "../components/navbar/navBar"
 import { AiOutlinePlusCircle } from "react-icons/ai"
-import AllNotes from "./allNotes"
-import buttons from "../buttons/buttons.module.css"
-import styles from "./notes.module.css"
+import AllNotes from "../components/notes/allNotes"
+import buttons from "../components/buttons/buttons.module.css"
+import styles from "../components/notes/notes.module.css"
 import { useSelector } from "react-redux"
 
 const AllNotesPage = () => {

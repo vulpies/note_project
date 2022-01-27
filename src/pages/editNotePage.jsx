@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react"
-import NavBar from "../../../menu/navbar/navBar"
-import BackToMainPage from "../buttons/backToMainPage"
+import React from "react"
+import NavBar from "../components/navbar/navBar"
+import BackToMainPage from "../components/buttons/backToMainPage"
 import { Spinner } from "react-bootstrap"
 import { useParams, useHistory } from "react-router-dom"
-import buttons from "../buttons/buttons.module.css"
-import CommonLinkBtn from "../buttons/commonLinkBtn"
-import styles from "../create_note/createNote.module.css"
+import buttons from "../components/buttons/buttons.module.css"
+import CommonLinkBtn from "../components/buttons/commonLinkBtn"
+import styles from "./create_note/createNote.module.css"
 import { useDispatch, useSelector } from "react-redux"
-import { getNoteById, UPD_NOTE } from "../../../store/notes-actions"
+import { getNoteById, UPD_NOTE } from "../store/notes-actions"
 
 const EditNotePage = () => {
     const dispatch = useDispatch()

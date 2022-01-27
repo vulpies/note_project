@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
-import NavBar from "../../../menu/navbar/navBar"
-import { ADD_NOTE } from "../../../store/notes-actions"
-import BackToMainPage from "../buttons/backToMainPage"
-import buttons from "../buttons/buttons.module.css"
-import ModalSave from "../modal/modalSave"
+import NavBar from "../../components/navbar/navBar"
+import { ADD_NOTE } from "../../store/notes-actions"
+import BackToMainPage from "../../components/buttons/backToMainPage"
+import buttons from "../../components/buttons/buttons.module.css"
+import ModalSave from "../../components/modal/modalSave"
 import styles from "./createNote.module.css"
 
 const CreateNewNote = () => {

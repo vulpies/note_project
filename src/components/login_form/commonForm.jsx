@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import CommonBtn from "../../blog/buttons/commonLinkBtn"
+import CommonBtn from "../buttons/commonLinkBtn"
 import buttons from "../../blog/buttons/buttons.module.css"
 import style from "./commonForm.module.css"
 import { useHistory } from "react-router-dom"

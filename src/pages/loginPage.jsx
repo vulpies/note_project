@@ -1,9 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom"
-// import CommonForm from "../components/logIn/login-form/commonForm"
-import ValidateForm from "../components/logIn/login-form/validateForm"
-import NavBar from "./navbar/navBar"
-import styles from "./registration/registration.module.css"
+import ValidateForm from "../components/login_form/validateForm"
+import NavBar from "../components/navbar/navBar"
+import styles from "../pages/registration/registration.module.css"
 
 const LoginPage = () => {
     return (
