@@ -10,12 +10,6 @@ import { useSelector } from "react-redux"
 
 const AllNotes = () => {
     const notes = useSelector((state) => state.notesReducer.notes)
-    // const { noteId } = useParams()
-    // const remove = useSelector(removeNoteById(noteId))
-
-    // const removeNote = (noteId) => {
-    //     remove(noteId)
-    // }
 
     return (
         <>
@@ -25,9 +19,7 @@ const AllNotes = () => {
                 >
                     <div className={styles.top}>
                         <h4 className={styles.title}>{note.title}</h4>
-                        <p className={styles.subtitle}>
-                            <pre>{note.description}</pre>
-                        </p>
+                        <p className={styles.subtitle}>{note.description}</p>
                     </div>
 
                     <div className={buttons.btns}>
@@ -40,7 +32,7 @@ const AllNotes = () => {
                         <OpenModal
                             name="Удалить"
                             text="Подтверждаете удаление заметки?"
-                            // onClick={}
+                            noteId={note._id}
                         />
                     </div>
                 </div>

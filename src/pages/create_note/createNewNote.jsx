@@ -1,47 +1,28 @@
 import React, { useState } from "react"
 import { useDispatch } from "react-redux"
-import { useHistory } from "react-router-dom"
 import NavBar from "../../components/navbar/navBar"
-import { ADD_NOTE } from "../../store/notes-actions"
 import BackToMainPage from "../../components/buttons/backToMainPage"
 import buttons from "../../components/buttons/buttons.module.css"
 import ModalSave from "../../components/modal/modalSave"
 import styles from "./createNote.module.css"
+import { addNote } from "../../store/notes-actions"
 
 const CreateNewNote = () => {
     const dispatch = useDispatch()
-    const history = useHistory()
 
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [text, setText] = useState("")
 
-    const [show, setShow] = useState(false)
-
-    //передается из модалки
-    const handleClick = () => {
-        setShow(true)
-        addNewNote()
-    }
-
     const addNewNote = () => {
         if (title.trim() === "" || description.trim() === "") {
             setText("Заголовок и/или описание не может быть пустым")
         } else {
-            const newNote = dispatch({
-                type: ADD_NOTE,
-                payload: {
-                    _id: Date.now(),
-                    title: title.trim(),
-                    description: description.trim(),
-                },
-            })
+            dispatch(addNote(title, description))
 
-            console.log(newNote)
             setTitle("")
             setDescription("")
-            setText("Новая заметка успешно создана")
-            history.push(`/notes`) // если есть хистори, то нет модалки
+            setText("Ваша заметка создается! Ыыыы!")
         }
     }
 

@@ -6,7 +6,7 @@ const NavBar = () => {
     return (
         <ul className={nav.navbar}>
             <li className={nav.admin}>
-                <Link to="/admin">Админка</Link>
+                <Link to="/users">Админка</Link>
             </li>
             <li>
                 <Link to="/">Войти / Выйти</Link>

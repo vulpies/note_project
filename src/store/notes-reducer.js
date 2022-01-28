@@ -25,7 +25,8 @@ export const notesReducer = (state = initialState, action) => {
             }
         }
         case REMOVE_NOTE: {
-            const { id } = action.payload
+            const id = action.payload
+            console.log(id)
             return {
                 notes: [...state.notes.filter((n) => n._id !== id)],
             }

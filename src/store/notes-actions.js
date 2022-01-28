@@ -8,8 +8,32 @@ export const getNoteById = (noteId) => (state) => {
     }
 }
 
-export const removeNoteById = (noteId) => (state) => {
-    if (state.notesReducer.notes) {
-        return state.notesReducer.notes.filter((n) => n._id !== Number(noteId))
+export function addNote(title, description) {
+    return {
+        type: ADD_NOTE,
+        payload: {
+            _id: Date.now(),
+            title: title.trim(),
+            description: description.trim(),
+        },
+    }
+}
+
+export function updNote(note) {
+    return {
+        type: UPD_NOTE,
+        payload: {
+            id: note._id,
+            title: note.title,
+            description: note.description,
+        },
+    }
+}
+
+export function removeNote(id) {
+    console.log(id, "1111")
+    return {
+        type: REMOVE_NOTE,
+        payload: id,
     }
 }

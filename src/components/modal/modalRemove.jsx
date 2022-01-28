@@ -4,19 +4,19 @@ import { Button } from "react-bootstrap"
 import buttons from "../buttons/buttons.module.css"
 import CommonLinkBtn from "../buttons/commonLinkBtn"
 import { useDispatch } from "react-redux"
-import { useParams } from "react-router-dom"
-import { removeNoteById } from "../../store/notes-actions"
+import { removeNote } from "../../store/notes-actions"
+import { useHistory } from "react-router-dom"
 
-const OpenModal = ({ text, name }) => {
+const OpenModal = ({ text, name, noteId }) => {
     const [show, setShow] = useState(false)
     const handleClose = () => setShow(false)
     const dispatch = useDispatch()
 
-    const { noteId } = useParams()
-    console.log(noteId)
+    let history = useHistory()
 
-    const removeNote = (noteId) => {
-        dispatch(removeNoteById(noteId))
+    const deleteNote = (note) => {
+        dispatch(removeNote(note))
+        history.push("/notes")
     }
 
     return (
@@ -50,7 +50,7 @@ const OpenModal = ({ text, name }) => {
                 <Modal.Footer>
                     <CommonLinkBtn
                         className={`${buttons.common} ${buttons.remove}`}
-                        onClick={removeNote}
+                        onClick={() => deleteNote(noteId)}
                         name="Удалить"
                     />
                     <CommonLinkBtn

@@ -2,15 +2,17 @@ import React, { useState } from "react"
 import Modal from "react-bootstrap/Modal"
 import { Button } from "react-bootstrap"
 import buttons from "../buttons/buttons.module.css"
-import CommonLinkBtn from "../buttons/commonLinkBtn"
+import { useHistory } from "react-router-dom"
 
 const ModalSave = ({ name, text, addNewNote }) => {
     const [show, setShow] = useState(false)
     const handleClose = () => setShow(false)
+    const history = useHistory()
 
     const handleClick = () => {
         setShow(true)
         addNewNote()
+        setTimeout(() => history.push(`/notes`), 1500)
     }
 
     return (
@@ -33,16 +35,8 @@ const ModalSave = ({ name, text, addNewNote }) => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <p>{text}</p>
+                    <p style={{ marginBottom: 30 }}>{text}</p>
                 </Modal.Body>
-
-                <Modal.Footer>
-                    <CommonLinkBtn
-                        className={`${buttons.common} ${buttons.open}`}
-                        onClick={() => setShow(false)}
-                        name="Закрыть"
-                    />
-                </Modal.Footer>
             </Modal>
         </>
     )

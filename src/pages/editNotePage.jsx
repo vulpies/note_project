@@ -7,7 +7,7 @@ import buttons from "../components/buttons/buttons.module.css"
 import CommonLinkBtn from "../components/buttons/commonLinkBtn"
 import styles from "./create_note/createNote.module.css"
 import { useDispatch, useSelector } from "react-redux"
-import { getNoteById, UPD_NOTE } from "../store/notes-actions"
+import { getNoteById, updNote } from "../store/notes-actions"
 
 const EditNotePage = () => {
     const dispatch = useDispatch()
@@ -20,15 +20,7 @@ const EditNotePage = () => {
     console.log(note)
 
     const handleChange = () => {
-        const updNote = dispatch({
-            type: UPD_NOTE,
-            payload: {
-                id: note._id,
-                title: note.title,
-                description: note.description,
-            },
-        })
-        console.log(updNote)
+        dispatch(updNote(note))
     }
 
     if (!note) {

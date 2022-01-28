@@ -20,7 +20,6 @@ const ValidateForm = ({ formName, btnName }) => {
     } = useForm({ mode: "onBlur" })
 
     const onSubmit = () => {
-        // alert("Добро пожаловать!")
         history.push("/notes")
     }
 
