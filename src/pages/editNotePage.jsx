@@ -19,8 +19,9 @@ const EditNotePage = () => {
     const note = useSelector(getNoteById(noteId))
     console.log(note)
 
-    const handleChange = () => {
+    const handleChange = (note) => {
         dispatch(updNote(note))
+        console.log("1111")
     }
 
     if (!note) {
@@ -52,7 +53,7 @@ const EditNotePage = () => {
                     <CommonLinkBtn
                         name="Сохранить"
                         className={`${buttons.common} ${buttons.open}`}
-                        onClick={handleChange}
+                        onClick={() => handleChange(note)}
                     />
                     <CommonLinkBtn
                         name="Отменить"

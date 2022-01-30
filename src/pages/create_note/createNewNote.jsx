@@ -6,9 +6,11 @@ import buttons from "../../components/buttons/buttons.module.css"
 import ModalSave from "../../components/modal/modalSave"
 import styles from "./createNote.module.css"
 import { addNote } from "../../store/notes-actions"
+import { useHistory } from "react-router-dom"
 
 const CreateNewNote = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -17,12 +19,10 @@ const CreateNewNote = () => {
     const addNewNote = () => {
         if (title.trim() === "" || description.trim() === "") {
             setText("Заголовок и/или описание не может быть пустым")
+            console.log("first")
         } else {
             dispatch(addNote(title, description))
-
-            setTitle("")
-            setDescription("")
-            setText("Ваша заметка создается! Ыыыы!")
+            history.push(`/notes`)
         }
     }
 
