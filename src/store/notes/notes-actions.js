@@ -31,7 +31,6 @@ export function updNote(note) {
 }
 
 export function removeNote(id) {
-    console.log(id, "1111")
     return {
         type: REMOVE_NOTE,
         payload: id,

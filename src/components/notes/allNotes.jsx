@@ -16,6 +16,7 @@ const AllNotes = () => {
             {notes.map((note) => (
                 <div
                     className={`${styles.singleBlock} col-xl-3 col-md-4 col-sm-6 col-12`}
+                    key={note._id}
                 >
                     <div className={styles.top}>
                         <h4 className={styles.title}>{note.title}</h4>

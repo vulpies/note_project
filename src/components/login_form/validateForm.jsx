@@ -5,7 +5,7 @@ import buttons from "../buttons/buttons.module.css"
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai"
 import { useHistory } from "react-router-dom"
 
-const ValidateForm = ({ formName, btnName }) => {
+const ValidateForm = ({ formName, btnName, submitFunction }) => {
     const [showPass, setShowPass] = useState(false)
 
     const togglePassVisible = (e) => {
@@ -17,9 +17,13 @@ const ValidateForm = ({ formName, btnName }) => {
         register,
         handleSubmit,
         formState: { errors, isValid },
+        getValues,
     } = useForm({ mode: "onBlur" })
 
     const onSubmit = () => {
+        submitFunction(getValues("register"))
+
+        console.log(getValues("register"), "1111")
         history.push("/notes")
     }
 
@@ -30,7 +34,7 @@ const ValidateForm = ({ formName, btnName }) => {
             <h2>{formName}</h2>
             <div className={style.wrapper}>
                 <input
-                    {...register("email", {
+                    {...register("register.email", {
                         required: "Поле обязательно к заполнению",
                         onChange: "",
                         pattern:
@@ -47,11 +51,11 @@ const ValidateForm = ({ formName, btnName }) => {
                 </div>
 
                 <input
-                    {...register("password", {
+                    {...register("register.password", {
                         required: "Поле обязательно к заполнению",
                         minLength: {
-                            value: 8,
-                            message: "Минимальная длина пароля 8 символов",
+                            value: 5,
+                            message: "Минимальная длина пароля 5 символов",
                         },
                         maxLength: {
                             value: 20,

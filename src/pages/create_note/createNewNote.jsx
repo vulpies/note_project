@@ -5,7 +5,7 @@ import BackToMainPage from "../../components/buttons/backToMainPage"
 import buttons from "../../components/buttons/buttons.module.css"
 import ModalSave from "../../components/modal/modalSave"
 import styles from "./createNote.module.css"
-import { addNote } from "../../store/notes-actions"
+import { addNote } from "../../store/notes/notes-actions"
 import { useHistory } from "react-router-dom"
 
 const CreateNewNote = () => {

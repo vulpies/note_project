@@ -3,8 +3,13 @@ import { Link } from "react-router-dom"
 import ValidateForm from "../../components/login_form/validateForm"
 import NavBar from "../../components/navbar/navBar"
 import styles from "./registration.module.css"
+import authService from "../../services/auth.service"
 
 const Registration = () => {
+    const submitFunction = async (payload) => {
+        const response = await authService.register(payload)
+        return response
+    }
     return (
         <>
             <NavBar />
@@ -27,6 +32,7 @@ const Registration = () => {
                     <ValidateForm
                         formName={"Регистрация"}
                         btnName={"Зарегистрироваться"}
+                        submitFunction={submitFunction}
                     />
                 </div>
             </div>

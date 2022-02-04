@@ -1,12 +1,13 @@
 import React from "react"
 import NavBar from "../../components/navbar/navBar"
+import Users from "../../components/Users"
 
 const AdminPage = () => {
     return (
         <>
             <NavBar />
             <div className="main main__div">
-                <h1>Админка</h1>
+                <Users />
             </div>
         </>
     )

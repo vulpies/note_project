@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import NavBar from "../components/navbar/navBar"
 import BackToMainPage from "../components/buttons/backToMainPage"
 import { Spinner } from "react-bootstrap"
@@ -7,21 +7,30 @@ import buttons from "../components/buttons/buttons.module.css"
 import CommonLinkBtn from "../components/buttons/commonLinkBtn"
 import styles from "./create_note/createNote.module.css"
 import { useDispatch, useSelector } from "react-redux"
-import { getNoteById, updNote } from "../store/notes-actions"
+import { getNoteById, updNote } from "../store/notes/notes-actions"
 
 const EditNotePage = () => {
-    const dispatch = useDispatch()
     const { noteId } = useParams()
+    const note = useSelector(getNoteById(noteId))
+
+    const [title, setTitle] = useState(note.title)
+    const [description, setDescription] = useState(note.description)
+
+    const dispatch = useDispatch()
     const history = useHistory()
     const handleClick = () => {
         history.push(`/notes/${noteId}`)
     }
-    const note = useSelector(getNoteById(noteId))
-    console.log(note)
 
-    const handleChange = (note) => {
-        dispatch(updNote(note))
-        console.log("1111")
+    const handleChange = () => {
+        dispatch(
+            updNote({
+                _id: note._id,
+                title,
+                description,
+            })
+        )
+        history.push(`/notes/${noteId}`)
     }
 
     if (!note) {
@@ -43,17 +52,24 @@ const EditNotePage = () => {
 
                 <div className={styles.texts}>
                     <p className={styles.subtitle}>Название:</p>
-                    <input type="text" defaultValue={note.title} />
+                    <input
+                        type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
 
                     <p className={styles.subtitle}>Описание:</p>
-                    <textarea defaultValue={note.description}></textarea>
+                    <textarea
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    ></textarea>
                 </div>
 
                 <div className={buttons.btns}>
                     <CommonLinkBtn
                         name="Сохранить"
                         className={`${buttons.common} ${buttons.open}`}
-                        onClick={() => handleChange(note)}
+                        onClick={handleChange}
                     />
                     <CommonLinkBtn
                         name="Отменить"

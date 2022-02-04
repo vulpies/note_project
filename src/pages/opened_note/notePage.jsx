@@ -6,7 +6,7 @@ import { Spinner } from "react-bootstrap"
 import CommonLinkBtn from "../../components/buttons/commonLinkBtn"
 import buttons from "../../components/buttons/buttons.module.css"
 import notesStyle from "./notePage.module.css"
-import { getNoteById } from "../../store/notes-actions"
+import { getNoteById } from "../../store/notes/notes-actions"
 import { useSelector } from "react-redux"
 import OpenModal from "../../components/modal/modalRemove"
 

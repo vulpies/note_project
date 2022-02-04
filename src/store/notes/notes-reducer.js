@@ -4,11 +4,10 @@ const initialState = {
     notes: [],
 }
 
-export const notesReducer = (state = initialState, action) => {
+const notesReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NOTE: {
-            const newNote = action.payload
-            return { ...state, notes: [...state.notes, newNote] }
+            return { ...state, notes: [...state.notes, action.payload] }
         }
         case UPD_NOTE: {
             const { id, title, description } = action.payload
@@ -26,7 +25,6 @@ export const notesReducer = (state = initialState, action) => {
         }
         case REMOVE_NOTE: {
             const id = action.payload
-            console.log(id)
             return {
                 notes: [...state.notes.filter((n) => n._id !== id)],
             }
@@ -35,3 +33,5 @@ export const notesReducer = (state = initialState, action) => {
             return { ...state }
     }
 }
+
+export default notesReducer
