@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom"
 
 const ValidateForm = ({ formName, btnName, submitFunction }) => {
     const [showPass, setShowPass] = useState(false)
+    let history = useHistory()
 
     const togglePassVisible = (e) => {
         e.preventDefault()
@@ -18,16 +19,14 @@ const ValidateForm = ({ formName, btnName, submitFunction }) => {
         handleSubmit,
         formState: { errors, isValid },
         getValues,
-    } = useForm({ mode: "onBlur" })
+    } = useForm()
+
+    //не работает проверка вводимого юзера с существующим
 
     const onSubmit = () => {
         submitFunction(getValues("register"))
-
-        console.log(getValues("register"), "1111")
         history.push("/notes")
     }
-
-    let history = useHistory()
 
     return (
         <form className={style.form} onSubmit={handleSubmit}>
@@ -82,8 +81,8 @@ const ValidateForm = ({ formName, btnName, submitFunction }) => {
                 </div>
 
                 <input
-                    type="submit"
-                    disabled={!isValid}
+                    type="button"
+                    disabled={isValid}
                     className={`${buttons.common} ${buttons.reg}`}
                     value={btnName}
                     onClick={onSubmit}

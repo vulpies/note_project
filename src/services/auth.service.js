@@ -1,25 +1,26 @@
 import axios from "axios"
 import localStorageService from "./localStorage.service"
 
+const url = "http://localhost:4000/api/auth/"
+
 const authService = {
     register: async (payload) => {
-        const { data } = await axios.post(
-            "http://localhost:4000/api/auth/registration",
-            payload
-        )
-        return data
+        try {
+            const { data } = await axios.post(url + "registration/", payload)
+            return data
+        } catch (error) {
+            return error
+        }
     },
-    login: async ({ email, password }) => {
-        console.log("666")
-        const { data } = await axios.post(
-            "http://localhost:4000/api/auth/login",
-            {
-                email,
-                password,
-                returnSecureToken: true,
-            }
-        )
-        return data
+    login: async (payload) => {
+        try {
+            console.log("666")
+            const { data } = await axios.post(url + "login/", payload)
+            console.log(data, "777")
+            return data
+        } catch (error) {
+            return error
+        }
     },
     logout: () => {
         localStorageService.removeAuthData()

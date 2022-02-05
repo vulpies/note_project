@@ -4,10 +4,15 @@ import ValidateForm from "../components/login_form/validateForm"
 import NavBar from "../components/navbar/navBar"
 import styles from "../pages/registration/registration.module.css"
 import authService from "../services/auth.service"
+import { useDispatch } from "react-redux"
+import { getUser } from "../store/users/users-actions"
 
 const LoginPage = () => {
-    const submitFunction = async ({ payload }) => {
-        const response = await authService.login({ payload })
+    const dispatch = useDispatch()
+
+    const submitFunction = async (payload) => {
+        const response = await authService.login(payload)
+        dispatch(getUser(payload))
         return response
     }
     return (
