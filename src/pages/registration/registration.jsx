@@ -1,19 +1,21 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import ValidateForm from "../../components/login_form/validateForm"
 import NavBar from "../../components/navbar/navBar"
 import styles from "./registration.module.css"
 import authService from "../../services/auth.service"
 import { useDispatch } from "react-redux"
-import { addUser } from "../../store/users/users-actions"
+import { addUser } from "../../store/usersSlise"
 
 const Registration = () => {
     const dispatch = useDispatch()
+    let history = useHistory()
 
     const submitFunction = async (payload) => {
         const response = await authService.register(payload)
         dispatch(addUser(payload))
-        console.log(response)
+        history.push("/login")
+        return response
     }
     return (
         <>
@@ -26,7 +28,7 @@ const Registration = () => {
                     </p>
                     <p className={styles.info}>
                         После успешной регистрации вы будете автоматически
-                        перенаправлены на главную страницу блога.
+                        перенаправлены на страницу входа.
                     </p>
                     <p className={styles.info}>
                         Если у вас уже есть аккaунт,

@@ -1,19 +1,24 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import ValidateForm from "../components/login_form/validateForm"
 import NavBar from "../components/navbar/navBar"
 import styles from "../pages/registration/registration.module.css"
 import authService from "../services/auth.service"
 import { useDispatch } from "react-redux"
-import { getUser } from "../store/users/users-actions"
+import { getUser } from "../store/usersSlise"
+import localStorageService from "../services/localStorage.service"
 
 const LoginPage = () => {
     const dispatch = useDispatch()
+    let history = useHistory()
 
     const submitFunction = async (payload) => {
         const response = await authService.login(payload)
-        dispatch(getUser(payload))
-        return response
+        if (response.tokens) {
+            dispatch(getUser(payload))
+            localStorageService.setTokens(response.tokens)
+            history.push("/notes")
+        }
     }
     return (
         <>

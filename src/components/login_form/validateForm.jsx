@@ -3,11 +3,9 @@ import { useForm } from "react-hook-form"
 import style from "./validateForm.module.css"
 import buttons from "../buttons/buttons.module.css"
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai"
-import { useHistory } from "react-router-dom"
 
 const ValidateForm = ({ formName, btnName, submitFunction }) => {
     const [showPass, setShowPass] = useState(false)
-    let history = useHistory()
 
     const togglePassVisible = (e) => {
         e.preventDefault()
@@ -17,15 +15,13 @@ const ValidateForm = ({ formName, btnName, submitFunction }) => {
     const {
         register,
         handleSubmit,
-        formState: { errors, isValid },
+        formState: { errors },
         getValues,
-    } = useForm()
-
-    //не работает проверка вводимого юзера с существующим
+    } = useForm({ mode: "onBlur" })
 
     const onSubmit = () => {
-        submitFunction(getValues("register"))
-        history.push("/notes")
+        submitFunction(getValues())
+        console.log(getValues(), "vdvesb")
     }
 
     return (
@@ -33,7 +29,7 @@ const ValidateForm = ({ formName, btnName, submitFunction }) => {
             <h2>{formName}</h2>
             <div className={style.wrapper}>
                 <input
-                    {...register("register.email", {
+                    {...register("email", {
                         required: "Поле обязательно к заполнению",
                         onChange: "",
                         pattern:
@@ -50,7 +46,7 @@ const ValidateForm = ({ formName, btnName, submitFunction }) => {
                 </div>
 
                 <input
-                    {...register("register.password", {
+                    {...register("password", {
                         required: "Поле обязательно к заполнению",
                         minLength: {
                             value: 5,
@@ -82,7 +78,6 @@ const ValidateForm = ({ formName, btnName, submitFunction }) => {
 
                 <input
                     type="button"
-                    disabled={isValid}
                     className={`${buttons.common} ${buttons.reg}`}
                     value={btnName}
                     onClick={onSubmit}

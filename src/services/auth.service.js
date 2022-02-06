@@ -14,9 +14,7 @@ const authService = {
     },
     login: async (payload) => {
         try {
-            console.log("666")
             const { data } = await axios.post(url + "login/", payload)
-            console.log(data, "777")
             return data
         } catch (error) {
             return error
