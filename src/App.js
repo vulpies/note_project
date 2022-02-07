@@ -9,24 +9,26 @@ import NotePage from "./pages/opened_note/notePage"
 import EditNotePage from "./pages/editNotePage"
 import AdminPage from "./pages/admin_page/adminPage"
 import LoginPage from "./pages/loginPage"
+import ProtectedRoute from "./pages/protectedRoute"
 
 function App() {
     return (
         <div>
             <Switch>
                 <Route path="/" exact component={MainPage} />
-                <Route path="/users" component={AdminPage} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/registration" component={Registration} />
-                <Route
+
+                <ProtectedRoute path="/users" component={AdminPage} />
+                <ProtectedRoute
                     path="/notes/editnote/:noteId"
                     component={EditNotePage}
                 />
-                <Route path="/notes/:noteId" component={NotePage} />
-                <Route path="/notes" component={AllNotesPage} />
-                <Route path="/createnote" component={CreateNewNote} />
-                <Route path="/404" component={page404} />
-                <Redirect to="/404" />
+                <ProtectedRoute path="/notes/:noteId" component={NotePage} />
+                <ProtectedRoute path="/notes" component={AllNotesPage} />
+                <ProtectedRoute path="/createnote" component={CreateNewNote} />
+                <ProtectedRoute path="/404" component={page404} />
+                <Redirect to="/" />
             </Switch>
         </div>
     )

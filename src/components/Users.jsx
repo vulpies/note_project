@@ -1,25 +1,26 @@
-import React, { useEffect, useState } from "react"
-import userService from "../services/user.service"
+import React from "react"
+import { useSelector } from "react-redux"
+// import userService from "../services/user.service"
 
 const Users = () => {
-    const [users, setUsers] = useState([])
+    const users = useSelector((state) => state.usersReducer)
 
-    useEffect(() => {
-        const getUsers = async () => {
-            try {
-                const response = await userService.get()
-                console.log(response.data)
-                return setUsers(response.data)
-            } catch (error) {}
-        }
-        getUsers()
-    }, [])
+    console.log(users)
+
+    // const getUsers = async () => {
+    //     try {
+    //         const response = await userService.get()
+    //         console.log(response, "66666")
+    //     } catch (error) {
+    //         console.log(error.message)
+    //     }
+    // }
 
     return (
         <>
-            <div>
+            {/* <div>
                 <h2>Users List:</h2>
-                {users?.length ? (
+                {users.users.length ? (
                     <ul>
                         {users.map((user) => (
                             <li key={user._id}>{user.name}</li>
@@ -28,7 +29,9 @@ const Users = () => {
                 ) : (
                     <p>На данный момент никто не зарегистрирован</p>
                 )}
-            </div>
+                {getUsers}
+            </div> */}
+            {/* <div>{users.users}</div> */}
         </>
     )
 }

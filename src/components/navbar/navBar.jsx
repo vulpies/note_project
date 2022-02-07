@@ -30,13 +30,13 @@ if(users) {
 
     return (
         <ul className={nav.navbar}>
-            {users.users.map((user) => user.role === "ADMIN") ? (
+            {/*  {users.users.map((user) => user.role === "ADMIN") ? (
                 <li className={nav.admin}>
                     <Link to="/users">Админка</Link>
                 </li>
             ) : (
                 ""
-            )}
+            )} */}
 
             {users.auth === true ? (
                 <li>

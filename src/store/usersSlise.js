@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
-// import localStorageService from "../services/localStorage.service"
 
 const initialState = {
     users: [],
-    errors: false,
     auth: false,
 }
 
@@ -15,11 +13,7 @@ const usersSlise = createSlice({
             state.users.push(action.payload)
         },
         getUser: (state, action) => {
-            state.users = state.users.filter(
-                (user) =>
-                    user.email === action.payload &&
-                    user.password === action.payload
-            )
+            state.users = action.payload
             state.auth = true
         },
         getUsers: (state) => {
@@ -27,7 +21,7 @@ const usersSlise = createSlice({
         },
         userLogout: (state) => {
             state.users = null
-            state.auth = null
+            state.auth = false
         },
     },
 })

@@ -15,8 +15,8 @@ const LoginPage = () => {
     const submitFunction = async (payload) => {
         const response = await authService.login(payload)
         if (response.tokens) {
-            dispatch(getUser(payload))
             localStorageService.setTokens(response.tokens)
+            dispatch(getUser(payload))
             history.push("/notes")
         }
     }
