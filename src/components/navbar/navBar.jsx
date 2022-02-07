@@ -1,8 +1,21 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { Link, useHistory } from "react-router-dom"
+import localStorageService from "../../services/localStorage.service"
+// import { userLogout } from "../../store/usersSlise"
 import nav from "./navbar.module.css"
 
 const NavBar = () => {
+    const users = useSelector((state) => state.usersReducer)
+    // const dispatch = useDispatch()
+    let history = useHistory()
+
+    const handleLogout = async () => {
+        // dispatch(userLogout())
+        localStorageService.removeAuthData()
+        history.push("/")
+    }
+
     /*  после получения юзеров из стейта
 if(users) {
     users.filter((user)=>
@@ -17,12 +30,25 @@ if(users) {
 
     return (
         <ul className={nav.navbar}>
-            <li className={nav.admin}>
-                <Link to="/users">Админка</Link>
-            </li>
-            <li>
-                <Link to="/">Войти / Выйти</Link>
-            </li>
+            {users.users.map((user) => user.role === "ADMIN") ? (
+                <li className={nav.admin}>
+                    <Link to="/users">Админка</Link>
+                </li>
+            ) : (
+                ""
+            )}
+
+            {users.auth === true ? (
+                <li>
+                    <a href="" onClick={handleLogout}>
+                        Выйти
+                    </a>
+                </li>
+            ) : (
+                <li>
+                    <Link to="/login">Войти</Link>
+                </li>
+            )}
         </ul>
     )
 }

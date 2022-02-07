@@ -20,9 +20,6 @@ const authService = {
             return error
         }
     },
-    logout: () => {
-        localStorageService.removeAuthData()
-    },
     refresh: async () => {
         const { data } = await axios.post("token", {
             grant_type: "refresh_token",
