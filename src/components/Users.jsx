@@ -4,34 +4,25 @@ import { useSelector } from "react-redux"
 
 const Users = () => {
     const users = useSelector((state) => state.usersReducer)
+    let info = Object.values(users)[0]
 
-    console.log(users)
-
-    // const getUsers = async () => {
-    //     try {
-    //         const response = await userService.get()
-    //         console.log(response, "66666")
-    //     } catch (error) {
-    //         console.log(error.message)
-    //     }
-    // }
+    console.log(info, "111")
+    // console.log(info.email, "2222")
+    // console.log(users, "3333")
 
     return (
         <>
             {/* <div>
                 <h2>Users List:</h2>
-                {users.users.length ? (
+                {info.length ? (
                     <ul>
-                        {users.map((user) => (
-                            <li key={user._id}>{user.name}</li>
-                        ))}
+                        <li key={info._id}>{info.email}</li>
                     </ul>
                 ) : (
                     <p>На данный момент никто не зарегистрирован</p>
                 )}
-                {getUsers}
             </div> */}
-            {/* <div>{users.users}</div> */}
+            {/* <div>{info.email}</div> */}
         </>
     )
 }

@@ -5,7 +5,7 @@ import NavBar from "../../components/navbar/navBar"
 import styles from "./registration.module.css"
 import authService from "../../services/auth.service"
 import { useDispatch } from "react-redux"
-import { addUser } from "../../store/usersSlise"
+import { addUser } from "../../store/usersSlice"
 
 const Registration = () => {
     const dispatch = useDispatch()

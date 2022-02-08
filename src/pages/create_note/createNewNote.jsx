@@ -5,7 +5,7 @@ import BackToMainPage from "../../components/buttons/backToMainPage"
 import buttons from "../../components/buttons/buttons.module.css"
 import ModalSave from "../../components/modal/modalSave"
 import styles from "./createNote.module.css"
-import { addNote } from "../../store/notes/notes-actions"
+import { addNote } from "../../store/notesSlice"
 import { useHistory } from "react-router-dom"
 
 const CreateNewNote = () => {
@@ -21,7 +21,12 @@ const CreateNewNote = () => {
             setText("Заголовок и/или описание не может быть пустым")
             console.log("first")
         } else {
-            dispatch(addNote(title, description))
+            const payload = {
+                _id: Date.now(),
+                title,
+                description,
+            }
+            dispatch(addNote(payload))
             history.push(`/notes`)
         }
     }

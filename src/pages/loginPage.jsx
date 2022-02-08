@@ -1,12 +1,13 @@
 import React from "react"
 import { Link, useHistory } from "react-router-dom"
+import { useDispatch } from "react-redux"
 import ValidateForm from "../components/login_form/validateForm"
 import NavBar from "../components/navbar/navBar"
 import styles from "../pages/registration/registration.module.css"
 import authService from "../services/auth.service"
-import { useDispatch } from "react-redux"
-import { getUser } from "../store/usersSlise"
 import localStorageService from "../services/localStorage.service"
+import { getUser } from "../store/usersSlice"
+import { Spinner } from "react-bootstrap"
 
 const LoginPage = () => {
     const dispatch = useDispatch()
@@ -14,11 +15,20 @@ const LoginPage = () => {
 
     const submitFunction = async (payload) => {
         const response = await authService.login(payload)
-        if (response.tokens) {
+        if (response?.tokens) {
             localStorageService.setTokens(response.tokens)
             dispatch(getUser(payload))
             history.push("/notes")
+        } else {
+            return (
+                <Spinner
+                    animation="border"
+                    variant="primary"
+                    style={{ marginTop: 200 }}
+                />
+            )
         }
+        console.log(response, "response")
     }
     return (
         <>

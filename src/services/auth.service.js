@@ -16,8 +16,8 @@ const authService = {
         try {
             const { data } = await axios.post(url + "login/", payload)
             return data
-        } catch (error) {
-            return error
+        } catch ({ error, abc }) {
+            return abc
         }
     },
     refresh: async () => {

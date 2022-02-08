@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { addNote } from "./notesSlice"
 
 const initialState = {
     users: [],
     auth: false,
+    notes: [],
 }
 
-const usersSlise = createSlice({
+const usersSlice = createSlice({
     name: "users",
     initialState,
     reducers: {
@@ -24,9 +26,16 @@ const usersSlise = createSlice({
             state.auth = false
         },
     },
+    extraReducers: (builder) => {
+        builder
+            .addCase(addNote, (state, action) => {
+                state.notes = action.payload
+            })
+            .addDefaultCase(() => {})
+    },
 })
 
-const { actions, reducer } = usersSlise
+const { actions, reducer } = usersSlice
 
 export default reducer
 export const { addUser, getUser, getUsers, userLogout } = actions

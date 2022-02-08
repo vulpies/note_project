@@ -6,14 +6,13 @@ import { Spinner } from "react-bootstrap"
 import CommonLinkBtn from "../../components/buttons/commonLinkBtn"
 import buttons from "../../components/buttons/buttons.module.css"
 import notesStyle from "./notePage.module.css"
-import { getNoteById } from "../../store/notes/notes-actions"
+import { getNoteById } from "../../store/notesSlice"
 import { useSelector } from "react-redux"
 import OpenModal from "../../components/modal/modalRemove"
 
 const NotePage = () => {
     const { noteId } = useParams()
     const note = useSelector(getNoteById(noteId))
-    console.log(note)
 
     if (!note) {
         return (

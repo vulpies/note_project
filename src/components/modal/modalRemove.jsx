@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap"
 import buttons from "../buttons/buttons.module.css"
 import CommonLinkBtn from "../buttons/commonLinkBtn"
 import { useDispatch } from "react-redux"
-import { removeNote } from "../../store/notes/notes-actions"
+import { removeNote } from "../../store/notesSlice"
 import { useHistory } from "react-router-dom"
 
 const OpenModal = ({ text, name, noteId }) => {
