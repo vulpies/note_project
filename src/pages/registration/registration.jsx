@@ -14,7 +14,9 @@ const Registration = () => {
     const submitFunction = async (payload) => {
         const response = await authService.register(payload)
         dispatch(addUser(payload))
-        history.push("/login")
+        if (!response) {
+            history.push("/login")
+        }
         return response
     }
     return (
@@ -40,6 +42,7 @@ const Registration = () => {
                         formName={"Регистрация"}
                         btnName={"Зарегистрироваться"}
                         submitFunction={submitFunction}
+                        pathName="registration"
                     />
                 </div>
             </div>

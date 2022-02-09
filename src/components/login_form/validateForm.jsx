@@ -4,14 +4,16 @@ import style from "./validateForm.module.css"
 import buttons from "../buttons/buttons.module.css"
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai"
 
-const ValidateForm = ({ formName, btnName, submitFunction }) => {
+const ValidateForm = ({ formName, btnName, submitFunction, pathName }) => {
     const [showPass, setShowPass] = useState(false)
+    const [serverErrors, setServerErrors] = useState("")
 
     const togglePassVisible = (e) => {
         e.preventDefault()
         setShowPass((prevState) => !prevState)
     }
 
+    const url = `http://localhost:4000/api/auth/${pathName}`
     const {
         register,
         handleSubmit,
@@ -19,13 +21,27 @@ const ValidateForm = ({ formName, btnName, submitFunction }) => {
         getValues,
     } = useForm({ mode: "onBlur" })
 
-    const onSubmit = () => {
-        submitFunction(getValues())
-        console.log(getValues(), "vdvesb")
+    const onSubmit = async () => {
+        await submitFunction(getValues())
+
+        setServerErrors([])
+        const res = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                email: register.email,
+                password: register.password,
+            }),
+        })
+        const data = await res.json()
+
+        if (data.error) {
+            setServerErrors(data.error)
+        }
     }
 
     return (
-        <form className={style.form} onSubmit={handleSubmit}>
+        <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
             <h2>{formName}</h2>
             <div className={style.wrapper}>
                 <input
@@ -74,13 +90,13 @@ const ValidateForm = ({ formName, btnName, submitFunction }) => {
                                 "Проверьте правильность ввода данных!"}
                         </p>
                     )}
+                    {serverErrors?.message}
                 </div>
 
                 <input
-                    type="button"
+                    type="submit"
                     className={`${buttons.common} ${buttons.reg}`}
                     value={btnName}
-                    onClick={onSubmit}
                 />
             </div>
         </form>

@@ -1,14 +1,16 @@
-import React from "react"
-import { useSelector } from "react-redux"
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 // import userService from "../services/user.service"
+import { getUsersList } from "../store/usersSlice"
 
 const Users = () => {
-    const users = useSelector((state) => state.usersReducer)
-    let info = Object.values(users)[0]
+    const { users } = useSelector((state) => state.usersReducer)
+    const dispatch = useDispatch()
+    console.log(users)
 
-    console.log(info, "111")
-    // console.log(info.email, "2222")
-    // console.log(users, "3333")
+    useEffect(() => {
+        dispatch(getUsersList())
+    }, [])
 
     return (
         <>

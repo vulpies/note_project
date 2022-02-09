@@ -17,6 +17,7 @@ const LoginPage = () => {
         const response = await authService.login(payload)
         if (response?.tokens) {
             localStorageService.setTokens(response.tokens)
+            localStorage.setItem("role", response.role)
             dispatch(getUser(payload))
             history.push("/notes")
         } else {
@@ -50,6 +51,7 @@ const LoginPage = () => {
                         formName={"Вход в систему"}
                         btnName={"Войти"}
                         submitFunction={submitFunction}
+                        pathName="login"
                     />
                 </div>
             </div>

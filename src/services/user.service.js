@@ -8,7 +8,7 @@ const userService = {
         return data
     },
     getNotes: async () => {
-        const { data } = await axios.get(url + "/notes")
+        const { data } = await axios.get(url + "notes/")
         return data
     },
 }
