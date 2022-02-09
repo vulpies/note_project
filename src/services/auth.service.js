@@ -16,12 +16,12 @@ const authService = {
         try {
             const { data } = await axios.post(url + "login/", payload)
             return data
-        } catch ({ error, abc }) {
-            return abc
+        } catch (error) {
+            return error
         }
     },
     refresh: async () => {
-        const { data } = await axios.post("token", {
+        const { data } = await axios.post(url + "token/", {
             grant_type: "refresh_token",
             refresh_token: localStorageService.getRefreshToken(),
         })

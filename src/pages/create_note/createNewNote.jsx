@@ -9,6 +9,7 @@ import { addNote } from "../../store/notesSlice"
 import { useHistory } from "react-router-dom"
 
 const CreateNewNote = () => {
+    // const { users } = useSelector((state) => state.usersReducer)
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -16,7 +17,7 @@ const CreateNewNote = () => {
     const [description, setDescription] = useState("")
     const [text, setText] = useState("")
 
-    const addNewNote = () => {
+    const addNewNote = async () => {
         if (title.trim() === "" || description.trim() === "") {
             setText("Заголовок и/или описание не может быть пустым")
             console.log("first")
@@ -26,7 +27,13 @@ const CreateNewNote = () => {
                 title,
                 description,
             }
+            // const newPost = {
+            //     title,
+            //     description,
+            //     email: users.email,
+            // }
             dispatch(addNote(payload))
+
             history.push(`/notes`)
         }
     }

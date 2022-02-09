@@ -42,7 +42,6 @@ const Registration = () => {
                         formName={"Регистрация"}
                         btnName={"Зарегистрироваться"}
                         submitFunction={submitFunction}
-                        pathName="registration"
                     />
                 </div>
             </div>

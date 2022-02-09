@@ -4,7 +4,7 @@ import style from "./validateForm.module.css"
 import buttons from "../buttons/buttons.module.css"
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai"
 
-const ValidateForm = ({ formName, btnName, submitFunction, pathName }) => {
+const ValidateForm = ({ formName, btnName, submitFunction }) => {
     const [showPass, setShowPass] = useState(false)
     const [serverErrors, setServerErrors] = useState("")
 
@@ -13,7 +13,6 @@ const ValidateForm = ({ formName, btnName, submitFunction, pathName }) => {
         setShowPass((prevState) => !prevState)
     }
 
-    const url = `http://localhost:4000/api/auth/${pathName}`
     const {
         register,
         handleSubmit,
@@ -22,21 +21,12 @@ const ValidateForm = ({ formName, btnName, submitFunction, pathName }) => {
     } = useForm({ mode: "onBlur" })
 
     const onSubmit = async () => {
-        await submitFunction(getValues())
+        const data = await submitFunction(getValues())
 
         setServerErrors([])
-        const res = await fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                email: register.email,
-                password: register.password,
-            }),
-        })
-        const data = await res.json()
-
-        if (data.error) {
-            setServerErrors(data.error)
+        if (data?.request?.status === 400 || data?.request?.status === 409) {
+            const res = JSON.parse(data.request.response)
+            setServerErrors(res.error)
         }
     }
 

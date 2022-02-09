@@ -1,5 +1,5 @@
 import React from "react"
-import { Route, Switch, Redirect } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 import MainPage from "./pages/mainPage"
 import page404 from "./pages/page404"
 import Registration from "./pages/registration/registration"
@@ -19,7 +19,7 @@ function App() {
                 <Route path="/login" component={LoginPage} />
                 <Route path="/registration" component={Registration} />
 
-                <ProtectedRoute path="/users" component={AdminPage} />
+                <ProtectedRoute path="/users" exact component={AdminPage} />
                 <ProtectedRoute
                     path="/notes/editnote/:noteId"
                     component={EditNotePage}
@@ -28,7 +28,6 @@ function App() {
                 <ProtectedRoute path="/notes" component={AllNotesPage} />
                 <ProtectedRoute path="/createnote" component={CreateNewNote} />
                 <ProtectedRoute path="/404" component={page404} />
-                <Redirect to="/" />
             </Switch>
         </div>
     )

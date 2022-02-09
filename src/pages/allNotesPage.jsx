@@ -6,9 +6,30 @@ import AllNotes from "../components/notes/allNotes"
 import buttons from "../components/buttons/buttons.module.css"
 import styles from "../components/notes/notes.module.css"
 import { useSelector } from "react-redux"
+import localStorageService from "../services/localStorage.service"
+import { useHttp } from "../hooks/useHttp"
 
 const AllNotesPage = () => {
     const notes = useSelector((state) => state.notesReducer.notes)
+    const { request } = useHttp()
+    const token = localStorageService.getAccessToken()
+
+    const handleSend = async () => {
+        console.log(11111)
+        try {
+            const data = await request(
+                "http://localhost:4000/api/notes/",
+                "POST",
+                { title: "vernve", description: "vurnvmkce" },
+                {
+                    Authorization: `Bearer: ${token}`,
+                }
+            )
+            console.log(data, "data")
+        } catch (error) {
+            console.log(error, "error")
+        }
+    }
 
     return (
         <>
@@ -26,9 +47,13 @@ const AllNotesPage = () => {
                 {notes.length ? (
                     <AllNotes />
                 ) : (
-                    <h2 className={styles.blindMsg}>
-                        Сейчас у вас нет заметок
-                    </h2>
+                    <>
+                        <h2 className={styles.blindMsg}>
+                            Сейчас у вас нет заметок
+                        </h2>
+
+                        <button onClick={handleSend}>Send</button>
+                    </>
                 )}
             </div>
         </>

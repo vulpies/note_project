@@ -7,7 +7,6 @@ import styles from "../pages/registration/registration.module.css"
 import authService from "../services/auth.service"
 import localStorageService from "../services/localStorage.service"
 import { getUser } from "../store/usersSlice"
-import { Spinner } from "react-bootstrap"
 
 const LoginPage = () => {
     const dispatch = useDispatch()
@@ -15,21 +14,20 @@ const LoginPage = () => {
 
     const submitFunction = async (payload) => {
         const response = await authService.login(payload)
+
         if (response?.tokens) {
-            localStorageService.setTokens(response.tokens)
-            localStorage.setItem("role", response.role)
+            localStorageService.setTokens(
+                response.tokens,
+                response.userId,
+                response.role
+            )
+            // localStorage.setItem("role", response.role)
+            // localStorage.setItem("userId", response.userId)
             dispatch(getUser(payload))
             history.push("/notes")
-        } else {
-            return (
-                <Spinner
-                    animation="border"
-                    variant="primary"
-                    style={{ marginTop: 200 }}
-                />
-            )
         }
         console.log(response, "response")
+        return response
     }
     return (
         <>
@@ -51,7 +49,6 @@ const LoginPage = () => {
                         formName={"Вход в систему"}
                         btnName={"Войти"}
                         submitFunction={submitFunction}
-                        pathName="login"
                     />
                 </div>
             </div>

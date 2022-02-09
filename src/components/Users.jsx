@@ -1,17 +1,45 @@
+import axios from "axios"
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-// import userService from "../services/user.service"
-import { getUsersList } from "../store/usersSlice"
+import localStorageService from "../services/localStorage.service"
 
 const Users = () => {
     const { users } = useSelector((state) => state.usersReducer)
     const dispatch = useDispatch()
+    const getRole = localStorageService.getUserRole()
     console.log(users)
+    const payload = {
+        email: users.email,
+        password: users.password,
+        role: getRole,
+    }
 
+    console.log(payload, "payload")
+
+    const getUsersList = async () => {
+        try {
+            const data = await axios.get("http://localhost:4000/api/users")
+            console.log(data, "data")
+        } catch (error) {
+            console.log(error, "error")
+        }
+    }
     useEffect(() => {
-        dispatch(getUsersList())
+        getUsersList()
     }, [])
 
+    // useEffect(() => {
+    //     dispatch(getUsersList())
+    // }, [])
+
+    /*     const getUsersList = async () => {
+        // const payload = {
+        //     email: users.email,
+        //     password: users.password,
+        // }
+        const response = await userService.getUsers()
+        console.log(response, "response1111")
+    } */
     return (
         <>
             {/* <div>

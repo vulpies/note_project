@@ -8,12 +8,11 @@ import nav from "./navbar.module.css"
 const NavBar = () => {
     const users = useSelector((state) => state.usersReducer)
     const dispatch = useDispatch()
-    const userRole = localStorage.getItem("role")
+    const userRole = localStorageService.getUserRole()
 
     const handleLogout = async () => {
         dispatch(userLogout())
         localStorageService.removeAuthData()
-        localStorage.clear()
     }
 
     return (
