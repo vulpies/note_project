@@ -27,9 +27,9 @@ const notesSlice = createSlice({
 const { actions, reducer } = notesSlice
 
 export default reducer
-export const { addNote, removeNote, updNote } = actions
+export const { addNote, removeNote, updNote, getNotes } = actions
 
 export const getNoteById = (noteId) => (state) => {
     console.log(state, "0000")
-    return state.notesReducer.notes.find((n) => n._id === Number(noteId))
+    return state.notesReducer.notes.find((n) => n._id === noteId)
 }

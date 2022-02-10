@@ -3,20 +3,28 @@ import Modal from "react-bootstrap/Modal"
 import { Button } from "react-bootstrap"
 import buttons from "../buttons/buttons.module.css"
 import CommonLinkBtn from "../buttons/commonLinkBtn"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { removeNote } from "../../store/notesSlice"
 import { useHistory } from "react-router-dom"
+import { useHttp } from "../../hooks/useHttp"
 
 const OpenModal = ({ text, name, noteId }) => {
+    const notes = useSelector((state) => state.notesReducer.notes)
     const [show, setShow] = useState(false)
     const handleClose = () => setShow(false)
     const dispatch = useDispatch()
+    const { request } = useHttp()
 
     let history = useHistory()
 
     const deleteNote = (note) => {
-        dispatch(removeNote(note))
+        request(`http://localhost:4000/api/notes/${noteId}`, "DELETE")
+            .then((data) => console.log(data, "Deleted"))
+            .then(dispatch(removeNote(noteId)))
+            .catch((err) => console.log(err))
+
         history.push("/notes")
+        console.log(noteId)
     }
 
     return (

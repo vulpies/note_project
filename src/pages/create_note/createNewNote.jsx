@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import NavBar from "../../components/navbar/navBar"
 import BackToMainPage from "../../components/buttons/backToMainPage"
 import buttons from "../../components/buttons/buttons.module.css"
@@ -7,11 +7,13 @@ import ModalSave from "../../components/modal/modalSave"
 import styles from "./createNote.module.css"
 import { addNote } from "../../store/notesSlice"
 import { useHistory } from "react-router-dom"
+import { useHttp } from "../../hooks/useHttp"
 
 const CreateNewNote = () => {
-    // const { users } = useSelector((state) => state.usersReducer)
+    const { users } = useSelector((state) => state.usersReducer)
     const dispatch = useDispatch()
     const history = useHistory()
+    const { request } = useHttp()
 
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -23,16 +25,20 @@ const CreateNewNote = () => {
             console.log("first")
         } else {
             const payload = {
-                _id: Date.now(),
+                // front_note_id: Date.now(),
+                email: users.email,
                 title,
                 description,
             }
-            // const newPost = {
-            //     title,
-            //     description,
-            //     email: users.email,
-            // }
-            dispatch(addNote(payload))
+
+            request(
+                "http://localhost:4000/api/notes/",
+                "POST",
+                JSON.stringify(payload)
+            )
+                .then((res) => console.log(res, "Заметка успешно создана!"))
+                .then(dispatch(addNote(payload)))
+                .catch((err) => console.log(err))
 
             history.push(`/notes`)
         }

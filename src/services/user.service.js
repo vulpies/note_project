@@ -3,7 +3,7 @@ import { axios } from "axios"
 const url = "http://localhost:4000/api/"
 
 const userService = {
-    getUsers: async () => {
+    getUsers: async (payload) => {
         try {
             const { data } = await axios.get(url + "users/")
             console.log(data, "5555")
@@ -13,8 +13,13 @@ const userService = {
         }
     },
     getNotes: async () => {
-        const { data } = await axios.get(url + "notes/")
-        return data
+        try {
+            const { data } = await axios.get(url + "notes/")
+            console.log(data, "data2222")
+            return data
+        } catch (error) {
+            console.log(error, "error")
+        }
     },
     createNote: async (payload) => {
         const { data } = await axios.post(url + "notes/", payload)

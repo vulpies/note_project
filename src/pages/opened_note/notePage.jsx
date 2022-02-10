@@ -11,8 +11,12 @@ import { useSelector } from "react-redux"
 import OpenModal from "../../components/modal/modalRemove"
 
 const NotePage = () => {
+    const notes = useSelector((state) => state.notesReducer.notes)
+    console.log(notes, "notes")
     const { noteId } = useParams()
+    console.log(noteId, "bf")
     const note = useSelector(getNoteById(noteId))
+    console.log(note, "vubdnm")
 
     if (!note) {
         return (
