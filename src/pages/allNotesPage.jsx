@@ -10,17 +10,22 @@ import { useHttp } from "../hooks/useHttp"
 import { getNotes } from "../store/notesSlice"
 
 const AllNotesPage = () => {
-    const notes = useSelector((state) => state.notesReducer.notes)
     const { users } = useSelector((state) => state.usersReducer)
+    const notes = useSelector((state) => state.notesReducer.notes)
     const dispatch = useDispatch()
     const { request } = useHttp()
 
-    let url = new URL("http://localhost:4000/api/notes")
+    let url = new URL("http://localhost:4000/api/notes/")
     url.searchParams.set("email", users.email)
+
+    console.log(users.email, "users.email")
+    console.log(users, "email")
 
     useEffect(() => {
         getNotesFromServer()
     }, [])
+
+    console.log(url, "url")
 
     const getNotesFromServer = () => {
         request(url)
@@ -28,6 +33,7 @@ const AllNotesPage = () => {
             .catch((err) => console.log(err))
     }
 
+    console.log(notes.length, "notes")
     return (
         <>
             <NavBar />
@@ -41,7 +47,7 @@ const AllNotesPage = () => {
             </div>
 
             <div className={`row ${styles.mainBlock}`}>
-                {notes ? (
+                {notes.length ? (
                     <AllNotes />
                 ) : (
                     <>

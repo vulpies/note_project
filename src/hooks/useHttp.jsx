@@ -11,6 +11,7 @@ export const useHttp = () => {
         }
     ) => {
         try {
+            console.log(url, "url")
             const response = await fetch(url, {
                 method,
                 body,

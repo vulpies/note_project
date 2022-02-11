@@ -8,7 +8,7 @@ const AdminPage = () => {
         <>
             <NavBar />
             <BackToMainPage />
-            <div className="main main__div">
+            <div className="main">
                 <Users />
             </div>
         </>

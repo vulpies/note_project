@@ -32,7 +32,7 @@ const CreateNewNote = () => {
             }
 
             request(
-                "http://localhost:4000/api/notes/",
+                "http://localhost:4000/api/note/",
                 "POST",
                 JSON.stringify(payload)
             )

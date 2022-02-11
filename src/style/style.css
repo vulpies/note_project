@@ -70,3 +70,7 @@ textarea {
     min-height: 145px;
     height: 180px;
 }
+
+.user-list {
+    padding: 10px 0;
+}

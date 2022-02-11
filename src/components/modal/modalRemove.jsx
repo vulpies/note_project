@@ -17,14 +17,14 @@ const OpenModal = ({ text, name, noteId }) => {
 
     let history = useHistory()
 
-    const deleteNote = (note) => {
+    const deleteNote = (noteId) => {
         request(`http://localhost:4000/api/notes/${noteId}`, "DELETE")
             .then((data) => console.log(data, "Deleted"))
             .then(dispatch(removeNote(noteId)))
             .catch((err) => console.log(err))
 
-        history.push("/notes")
         console.log(noteId)
+        history.push("/notes")
     }
 
     return (

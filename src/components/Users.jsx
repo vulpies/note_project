@@ -4,40 +4,45 @@ import { useHttp } from "../hooks/useHttp"
 import { getUsers } from "../store/usersSlice"
 
 const Users = () => {
-    const { request } = useHttp()
     const { users } = useSelector((state) => state.usersReducer)
     const dispatch = useDispatch()
-    // const getRole = localStorageService.getUserRole()
-    console.log(users)
-    // const payload = {
-    //     email: users.email,
-    //     password: users.password,
-    //     role: getRole,
-    // }
+    const { request } = useHttp()
 
-    const getUsersList = async () => {
-        request("http://localhost:4000/api/notes")
+    console.log(users, "users")
+
+    let url = new URL("http://localhost:4000/api/users")
+    url.searchParams.set("email", users.email)
+
+    useEffect(() => {
+        getUsersFromServer()
+    }, [])
+
+    const getUsersFromServer = () => {
+        request(url)
             .then((req) => dispatch(getUsers(req)))
             .catch((err) => console.log(err))
     }
 
-    useEffect(() => {
-        getUsersList()
-    }, [])
-
     return (
         <>
-            {/* <div>
-                <h2>Users List:</h2>
-                {info.length ? (
+            <div>
+                <h2 style={{ color: "red" }}>Users List:</h2>
+
+                {users?.length ? (
                     <ul>
-                        <li key={info._id}>{info.email}</li>
+                        {users.map((user) => {
+                            return (
+                                <li key={user._id} className="user-list">
+                                    <b>{user.email}</b>, записей:{" "}
+                                    {user.notes.length}
+                                </li>
+                            )
+                        })}
                     </ul>
                 ) : (
                     <p>На данный момент никто не зарегистрирован</p>
                 )}
-            </div> */}
-            {/* <div>{info.email}</div> */}
+            </div>
         </>
     )
 }
