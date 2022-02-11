@@ -7,14 +7,16 @@ import buttons from "../components/buttons/buttons.module.css"
 import CommonLinkBtn from "../components/buttons/commonLinkBtn"
 import styles from "./create_note/createNote.module.css"
 import { useDispatch, useSelector } from "react-redux"
-import { getNoteById, updNote } from "../store/notesSlice"
+import { updNote } from "../store/notesSlice"
+import { useHttp } from "../hooks/useHttp"
 
 const EditNotePage = () => {
+    const notes = useSelector((state) => state.notesReducer.notes)
     const { noteId } = useParams()
-    const note = useSelector(getNoteById(noteId))
+    const { request } = useHttp()
 
-    const [title, setTitle] = useState(note.title)
-    const [description, setDescription] = useState(note.description)
+    const [title, setTitle] = useState(notes.title)
+    const [description, setDescription] = useState(notes.description)
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -24,16 +26,22 @@ const EditNotePage = () => {
 
     const handleChange = () => {
         const payload = {
-            _id: note._id,
+            _id: notes._id,
             title,
             description,
         }
-        console.log(payload, "3333")
-        dispatch(updNote(payload))
+        request(
+            `http://localhost:4000/api/notes/${noteId}`,
+            "PUT",
+            JSON.stringify(payload)
+        )
+            .then((res) => console.log(res, "Заметка обновлена!"))
+            .then(dispatch(updNote(payload)))
+            .catch((err) => console.log(err))
         history.push(`/notes/${noteId}`)
     }
 
-    if (!note) {
+    if (!notes) {
         return (
             <Spinner
                 animation="border"

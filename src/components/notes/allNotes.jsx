@@ -8,7 +8,7 @@ import { useSelector } from "react-redux"
 
 const AllNotes = () => {
     const notes = useSelector((state) => state.notesReducer.notes)
-
+    console.log(notes, "gbuhji")
     return (
         <>
             {notes.map((note) => (

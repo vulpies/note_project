@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { useHttp } from "../hooks/useHttp"
 
 const initialState = {
     notes: [],
@@ -21,7 +20,7 @@ const notesSlice = createSlice({
             state.notes = state.notes.filter((n) => n._id !== action.payload)
         },
         getNote: (state, action) => {
-            state.notes = state.notes.filter((n) => n._id === action.payload)
+            state.notes = state.notes.find((n) => n._id === action.payload)
         },
         getNotes: (state, action) => {
             state.notes = action.payload
@@ -36,17 +35,5 @@ export const { addNote, removeNote, updNote, getNotes, getNote } = actions
 
 export const getNoteById = (noteId) => (state) => {
     console.log(state, "0000")
-    return state.notesReducer.notes.find((n) => n._id === noteId)
+    return state.notesReducer.notes.find((n) => n._id === Number(noteId))
 }
-
-// export const getOneNote = (id) => async (dispatch) => {
-//     const request = useHttp()
-//     try {
-//         request(`http://localhost:4000/api/notes/${id}`)
-//             .then((res) => console.log(res, "Got it!"))
-//             .then(dispatch(getNote(id)))
-//             .catch((err) => console.log(err))
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }

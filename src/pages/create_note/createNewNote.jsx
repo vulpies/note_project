@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import NavBar from "../../components/navbar/navBar"
 import BackToMainPage from "../../components/buttons/backToMainPage"
 import buttons from "../../components/buttons/buttons.module.css"
@@ -10,7 +10,6 @@ import { useHistory } from "react-router-dom"
 import { useHttp } from "../../hooks/useHttp"
 
 const CreateNewNote = () => {
-    const { users } = useSelector((state) => state.usersReducer)
     const dispatch = useDispatch()
     const history = useHistory()
     const { request } = useHttp()
@@ -25,14 +24,13 @@ const CreateNewNote = () => {
             console.log("first")
         } else {
             const payload = {
-                // front_note_id: Date.now(),
-                email: users.email,
+                email: localStorage.getItem("email"),
                 title,
                 description,
             }
 
             request(
-                "http://localhost:4000/api/note/",
+                "http://localhost:4000/api/notes/",
                 "POST",
                 JSON.stringify(payload)
             )

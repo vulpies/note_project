@@ -1,27 +1,24 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHttp } from "../hooks/useHttp"
-import { getUsers } from "../store/usersSlice"
+import { getUser } from "../store/usersSlice"
+// import { getUsers } from "../store/usersSlice"
 
 const Users = () => {
     const { users } = useSelector((state) => state.usersReducer)
     const dispatch = useDispatch()
     const { request } = useHttp()
 
-    console.log(users, "users")
-
     let url = new URL("http://localhost:4000/api/users")
     url.searchParams.set("email", users.email)
 
     useEffect(() => {
-        getUsersFromServer()
-    }, [])
-
-    const getUsersFromServer = () => {
         request(url)
-            .then((req) => dispatch(getUsers(req)))
+            .then((req) => dispatch(getUser(req)))
             .catch((err) => console.log(err))
-    }
+    }, [users])
+
+    console.log(users)
 
     return (
         <>

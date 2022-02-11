@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-// import userService from "../services/user.service"
 
 const initialState = {
     users: [],
@@ -33,14 +32,3 @@ const { actions, reducer } = usersSlice
 
 export default reducer
 export const { addUser, getUser, getUsers, userLogout } = actions
-
-// export const getUsersList = () => async (dispatch) => {
-//     try {
-//         const data = await userService.getUsers()
-//         debugger
-//         dispatch(getUsers(data))
-//         console.log(data)
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }

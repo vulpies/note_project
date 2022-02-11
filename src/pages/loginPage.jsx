@@ -21,8 +21,6 @@ const LoginPage = () => {
                 response.userId,
                 response.role
             )
-            // localStorage.setItem("role", response.role)
-            // localStorage.setItem("userId", response.userId)
             dispatch(getUser(payload))
             history.push("/notes")
         }
