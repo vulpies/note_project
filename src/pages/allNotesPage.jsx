@@ -8,6 +8,7 @@ import styles from "../components/notes/notes.module.css"
 import { useDispatch, useSelector } from "react-redux"
 import { useHttp } from "../hooks/useHttp"
 import { getNotes } from "../store/notesSlice"
+import { Spinner } from "react-bootstrap"
 
 const AllNotesPage = () => {
     const notes = useSelector((state) => state.notesReducer.notes)
@@ -25,6 +26,16 @@ const AllNotesPage = () => {
         request(url)
             .then((req) => dispatch(getNotes(req)))
             .catch((err) => console.log(err))
+    }
+
+    if (!notes) {
+        return (
+            <Spinner
+                animation="border"
+                variant="primary"
+                style={{ marginTop: 200 }}
+            />
+        )
     }
 
     return (

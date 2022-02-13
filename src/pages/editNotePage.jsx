@@ -11,7 +11,7 @@ import { updNote } from "../store/notesSlice"
 import { useHttp } from "../hooks/useHttp"
 
 const EditNotePage = () => {
-    const notes = useSelector((state) => state.notesReducer.notes)
+    const notes = useSelector((state) => state.notesReducer.note)
     const { noteId } = useParams()
     const { request } = useHttp()
 
@@ -30,13 +30,14 @@ const EditNotePage = () => {
             title,
             description,
         }
+        dispatch(updNote(payload))
         request(
             `http://localhost:4000/api/notes/${noteId}`,
             "PUT",
             JSON.stringify(payload)
         )
             .then((res) => console.log(res, "Заметка обновлена!"))
-            .then(dispatch(updNote(payload)))
+            .then(() => {})
             .catch((err) => console.log(err))
         history.push(`/notes/${noteId}`)
     }
@@ -77,7 +78,7 @@ const EditNotePage = () => {
                     <CommonLinkBtn
                         name="Сохранить"
                         className={`${buttons.common} ${buttons.open}`}
-                        onClick={handleChange}
+                        onClick={() => handleChange()}
                     />
                     <CommonLinkBtn
                         name="Отменить"

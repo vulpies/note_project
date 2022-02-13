@@ -13,14 +13,16 @@ const notesSlice = createSlice({
             state.notes.push(action.payload)
         },
         updNote: (state, action) => {
-            const a = state.notes.filter((n) => n._id !== action.payload._id)
+            console.log(state, action, "999999")
+            const a =
+                state.notes.filter((n) => n._id !== action.payload._id) || []
             state.notes = [...a, action.payload]
         },
         removeNote: (state, action) => {
             state.notes = state.notes.filter((n) => n._id !== action.payload)
         },
         getNote: (state, action) => {
-            state.notes = state.notes.find((n) => n._id === action.payload)
+            state.note = state.notes.find((n) => n._id === action.payload)
         },
         getNotes: (state, action) => {
             state.notes = action.payload

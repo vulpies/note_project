@@ -11,11 +11,6 @@ const usersSlice = createSlice({
     reducers: {
         addUser: (state, action) => {
             state.users.push(action.payload)
-            state.usersForAdmin.push(action.payload)
-        },
-        getUser: (state, action) => {
-            state.users = action.payload
-            state.auth = true
         },
         getUsers: (state, action) => {
             state.users = action.payload

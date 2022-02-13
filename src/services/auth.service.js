@@ -9,7 +9,7 @@ const authService = {
             const { data } = await axios.post(url + "registration/", payload)
             return data
         } catch (error) {
-            return error
+            return error.message
         }
     },
     login: async (payload) => {

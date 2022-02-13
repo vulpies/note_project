@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import NavBar from "../../components/navbar/navBar"
 import { Link, useParams } from "react-router-dom"
 import BackToMainPage from "../../components/buttons/backToMainPage"
@@ -12,20 +12,21 @@ import { useDispatch, useSelector } from "react-redux"
 import { getNote } from "../../store/notesSlice"
 
 const NotePage = () => {
-    const notes = useSelector((state) => state.notesReducer.notes)
+    const notes = useSelector((state) => state.notesReducer.note)
     const { noteId } = useParams()
     const { request } = useHttp()
     const dispatch = useDispatch()
+    const newList = useRef([notes])
 
     const url = `http://localhost:4000/api/notes/${noteId}`
 
     useEffect(() => {
         request(url)
-            .then((res) => dispatch(getNote(res._id)))
+            .then((res) => {
+                newList.current = dispatch(getNote(res._id))
+            })
             .catch((err) => console.log(err))
-    }, [notes])
-
-    console.log(notes, "tufnm,")
+    }, [newList.current])
 
     if (!notes) {
         return (

@@ -6,7 +6,7 @@ import NavBar from "../components/navbar/navBar"
 import styles from "../pages/registration/registration.module.css"
 import authService from "../services/auth.service"
 import localStorageService from "../services/localStorage.service"
-import { getUser } from "../store/usersSlice"
+import { getUsers } from "../store/usersSlice"
 
 const LoginPage = () => {
     const dispatch = useDispatch()
@@ -21,7 +21,8 @@ const LoginPage = () => {
                 response.userId,
                 response.role
             )
-            dispatch(getUser(payload))
+            localStorage.setItem("email", payload.email)
+            dispatch(getUsers(payload))
             history.push("/notes")
         }
         console.log(response, "response")

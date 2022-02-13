@@ -13,6 +13,7 @@ const NavBar = () => {
     const handleLogout = async () => {
         dispatch(userLogout())
         localStorageService.removeAuthData()
+        localStorage.clear()
     }
 
     return (

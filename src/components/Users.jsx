@@ -1,8 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHttp } from "../hooks/useHttp"
-import { getUser } from "../store/usersSlice"
-// import { getUsers } from "../store/usersSlice"
+import { getUsers } from "../store/usersSlice"
 
 const Users = () => {
     const { users } = useSelector((state) => state.usersReducer)
@@ -10,15 +9,13 @@ const Users = () => {
     const { request } = useHttp()
 
     let url = new URL("http://localhost:4000/api/users")
-    url.searchParams.set("email", users.email)
+    url.searchParams.set("email", localStorage.getItem("email"))
 
     useEffect(() => {
         request(url)
-            .then((req) => dispatch(getUser(req)))
+            .then((req) => dispatch(getUsers(req)))
             .catch((err) => console.log(err))
-    }, [users])
-
-    console.log(users)
+    }, [])
 
     return (
         <>

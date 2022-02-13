@@ -22,8 +22,6 @@ const OpenModal = ({ text, name, noteId }) => {
             .then((data) => console.log(data, "Deleted"))
             .then(dispatch(removeNote(noteId)))
             .catch((err) => console.log(err))
-
-        console.log(noteId)
         history.push("/notes")
     }
 

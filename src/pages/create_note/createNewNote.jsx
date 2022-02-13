@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import NavBar from "../../components/navbar/navBar"
 import BackToMainPage from "../../components/buttons/backToMainPage"
 import buttons from "../../components/buttons/buttons.module.css"
@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom"
 import { useHttp } from "../../hooks/useHttp"
 
 const CreateNewNote = () => {
+    const { users } = useSelector((state) => state.usersReducer)
     const dispatch = useDispatch()
     const history = useHistory()
     const { request } = useHttp()
@@ -18,13 +19,13 @@ const CreateNewNote = () => {
     const [description, setDescription] = useState("")
     const [text, setText] = useState("")
 
-    const addNewNote = async () => {
+    const addNewNote = () => {
         if (title.trim() === "" || description.trim() === "") {
             setText("Заголовок и/или описание не может быть пустым")
             console.log("first")
         } else {
             const payload = {
-                email: localStorage.getItem("email"),
+                email: users.email || localStorage.getItem("email"),
                 title,
                 description,
             }
@@ -35,7 +36,7 @@ const CreateNewNote = () => {
                 JSON.stringify(payload)
             )
                 .then((res) => console.log(res, "Заметка успешно создана!"))
-                .then(dispatch(addNote(payload)))
+                .then(() => dispatch(addNote(payload)))
                 .catch((err) => console.log(err))
 
             history.push(`/notes`)
