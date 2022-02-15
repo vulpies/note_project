@@ -25,7 +25,6 @@ const LoginPage = () => {
             dispatch(getUsers(payload))
             history.push("/notes")
         }
-        console.log(response, "response")
         return response
     }
     return (

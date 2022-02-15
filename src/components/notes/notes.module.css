@@ -22,6 +22,8 @@
 .subtitle {
     width: 100%;
     font-size: 23px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
 }
 
 .blindMsg {

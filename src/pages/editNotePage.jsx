@@ -9,6 +9,7 @@ import styles from "./create_note/createNote.module.css"
 import { useDispatch, useSelector } from "react-redux"
 import { updNote } from "../store/notesSlice"
 import { useHttp } from "../hooks/useHttp"
+import ModalSave from "../components/modal/modalSave"
 
 const EditNotePage = () => {
     const notes = useSelector((state) => state.notesReducer.note)
@@ -17,29 +18,34 @@ const EditNotePage = () => {
 
     const [title, setTitle] = useState(notes.title)
     const [description, setDescription] = useState(notes.description)
+    const [text, setText] = useState("")
 
     const dispatch = useDispatch()
     const history = useHistory()
+
     const handleClick = () => {
         history.push(`/notes/${noteId}`)
     }
 
     const handleChange = () => {
-        const payload = {
-            _id: notes._id,
-            title,
-            description,
+        if (title.trim() === "" || description.trim() === "") {
+            setText("Заголовок и/или описание не может быть пустым")
+        } else {
+            const payload = {
+                _id: notes._id,
+                title,
+                description,
+            }
+            dispatch(updNote(payload))
+            request(
+                `http://localhost:4000/api/notes/${noteId}`,
+                "PUT",
+                JSON.stringify(payload)
+            )
+                .then(() => {})
+                .catch((err) => console.log(err))
+            history.push(`/notes/${noteId}`)
         }
-        dispatch(updNote(payload))
-        request(
-            `http://localhost:4000/api/notes/${noteId}`,
-            "PUT",
-            JSON.stringify(payload)
-        )
-            .then((res) => console.log(res, "Заметка обновлена!"))
-            .then(() => {})
-            .catch((err) => console.log(err))
-        history.push(`/notes/${noteId}`)
     }
 
     if (!notes) {
@@ -75,11 +81,12 @@ const EditNotePage = () => {
                 </div>
 
                 <div className={buttons.btns}>
-                    <CommonLinkBtn
+                    <ModalSave
+                        text={text}
                         name="Сохранить"
-                        className={`${buttons.common} ${buttons.open}`}
-                        onClick={() => handleChange()}
+                        addNewNote={handleChange}
                     />
+
                     <CommonLinkBtn
                         name="Отменить"
                         className={`${buttons.common} ${buttons.open}`}

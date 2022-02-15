@@ -35,6 +35,5 @@ export default reducer
 export const { addNote, removeNote, updNote, getNotes, getNote } = actions
 
 export const getNoteById = (noteId) => (state) => {
-    console.log(state, "0000")
     return state.notesReducer.notes.find((n) => n._id === Number(noteId))
 }

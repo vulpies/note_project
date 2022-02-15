@@ -33,7 +33,6 @@ const CreateNewNote = () => {
                 "POST",
                 JSON.stringify(payload)
             )
-                .then((res) => console.log(res, "Заметка успешно создана!"))
                 .then(dispatch(addNote(payload)))
                 .catch((err) => console.log(err))
 
@@ -83,22 +82,3 @@ const CreateNewNote = () => {
 }
 
 export default CreateNewNote
-
-/* await fetch('/createnote', {body: newNote})
-
-            server.post('/createnote', (req, res)=>{
-            const newNote = req.params.body
-                const id = ObjectId()
-                await db.notes.insertOne({_id: id, newNote})  //MongoDB
-            })
-
-            const notes = await fetch('/getnotes')
-
-            server.get('/getnotes', (req, res)=>{
-                const notes =  await db.notes.find()  //MongoDB
-                return notes
-            })
-
-            const [notes, setNotes] = useState([])
-
-            setNotes(notes) */

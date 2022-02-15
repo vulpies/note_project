@@ -16,9 +16,11 @@ const OpenModal = ({ text, name, noteId }) => {
 
     let history = useHistory()
 
+    let url = new URL(`http://localhost:4000/api/notes/${noteId}/`)
+    url.searchParams.set("email", localStorage.getItem("email"))
+
     const deleteNote = (noteId) => {
-        request(`http://localhost:4000/api/notes/${noteId}`, "DELETE")
-            .then((data) => console.log(data, "Deleted"))
+        request(url, "DELETE")
             .then(() => dispatch(removeNote(noteId)))
             .catch((err) => console.log(err))
         history.push("/notes")

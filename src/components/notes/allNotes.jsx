@@ -17,6 +17,7 @@ const AllNotes = () => {
                 >
                     <div className={styles.top}>
                         <h4 className={styles.title}>{note.title}</h4>
+
                         <p className={styles.subtitle}>{note.description}</p>
                     </div>
 

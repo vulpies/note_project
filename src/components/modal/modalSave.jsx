@@ -33,7 +33,9 @@ const ModalSave = ({ name, text, addNewNote }) => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <p style={{ marginBottom: 30 }}>{text}</p>
+                    <p style={{ marginBottom: 30, textAlign: "center" }}>
+                        {text}
+                    </p>
                 </Modal.Body>
 
                 <Modal.Footer>

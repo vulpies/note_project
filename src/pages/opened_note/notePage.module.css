@@ -11,10 +11,14 @@
 
 .open > h3 {
     margin-bottom: 15px;
+    font-size: 32px;
 }
 
 .open > p {
     text-align: center;
     width: 100%;
     hyphens: auto;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    font-size: 28px;
 }
