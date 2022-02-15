@@ -4,12 +4,12 @@ import localStorageService from "./localStorage.service"
 const url = "http://localhost:4000/api/auth/"
 
 const authService = {
-    register: async (payload) => {
+    registration: async (payload) => {
         try {
             const { data } = await axios.post(url + "registration/", payload)
             return data
         } catch (error) {
-            return error.message
+            return error
         }
     },
     login: async (payload) => {

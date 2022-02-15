@@ -3,37 +3,19 @@ import { Link, useHistory } from "react-router-dom"
 import ValidateForm from "../../components/login_form/validateForm"
 import NavBar from "../../components/navbar/navBar"
 import styles from "./registration.module.css"
-// import authService from "../../services/auth.service"
-import { useDispatch } from "react-redux"
-import { addUser } from "../../store/usersSlice"
-import { useHttp } from "../../hooks/useHttp"
+import authService from "../../services/auth.service"
 
 const Registration = () => {
-    const dispatch = useDispatch()
     let history = useHistory()
-    const { request } = useHttp()
 
-    const submitFunction = (payload) => {
-        // const response = await authService.register(payload)
+    const submitFunction = async (payload) => {
+        const response = await authService.registration(payload)
 
-        request(
-            "http://localhost:4000/api/auth/registration",
-            "POST",
-            JSON.stringify(payload)
-        )
-            .then((data) =>
-                console.log(data, "Новый пользователь успешно зарегистрирован!")
-            )
-            .then(() => {
-                dispatch(addUser(payload))
-                history.push("/login")
-            })
-            .catch((err) => {
-                if (err) {
-                    history.push("/registration")
-                    console.log(err)
-                }
-            })
+        if (response?.request?.status !== 409) {
+            history.push("/login")
+        }
+
+        return response
     }
 
     return (

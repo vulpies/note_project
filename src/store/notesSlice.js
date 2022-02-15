@@ -13,7 +13,6 @@ const notesSlice = createSlice({
             state.notes.push(action.payload)
         },
         updNote: (state, action) => {
-            console.log(state, action, "999999")
             const a =
                 state.notes.filter((n) => n._id !== action.payload._id) || []
             state.notes = [...a, action.payload]
