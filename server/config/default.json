@@ -1,0 +1,6 @@
+{
+    "port": 4000,
+    "mongoUri": "mongodb+srv://vulpi:fenix7482@cluster0.r9snb.mongodb.net/diplomaProject?retryWrites=true&w=majority",
+    "accessToken": "vd5btr4b8evsrrbvnr",
+    "refreshToken": "vmrdvbinvrmbvoerini"
+}
